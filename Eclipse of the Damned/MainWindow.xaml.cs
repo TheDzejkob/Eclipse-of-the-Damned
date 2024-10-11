@@ -19,15 +19,60 @@ namespace Eclipse_of_the_Damned
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int swordcounter = 0;
         public MainWindow()
         {
             InitializeComponent();
+            CompositionTarget.Rendering += OnRendering;
 
 
+            
 
+            
 
         }
-    private void QuitButton_Click(object sender, RoutedEventArgs e)
+        private void OnRendering(object sender, EventArgs e)
+        {
+         
+            HandleInput();
+        }
+        private void HandleInput()
+        {
+            if (Keyboard.IsKeyDown(Key.Up) || Keyboard.IsKeyDown(Key.W))
+            {
+                swordcounter--;
+                System.Threading.Thread.Sleep(50);
+            }
+            if (Keyboard.IsKeyDown(Key.Down))
+            {
+                swordcounter++;
+                System.Threading.Thread.Sleep(50);
+            }
+
+            
+            swordcounter = Math.Max(0, Math.Min(2, swordcounter));
+
+            UpdateArrowImage();
+        }
+
+        private void UpdateArrowImage()
+        {
+            switch (swordcounter)
+            {
+                case 0:
+                    ArrowImage.Margin = new Thickness(420, 290, 0, 0);
+                    break;
+                case 1:
+                    ArrowImage.Margin = new Thickness(420, 490, 0, 0);
+                    break;
+                case 2:
+                    ArrowImage.Margin = new Thickness(420, 690, 0, 0); 
+                    break;
+            }
+        }
+
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
     {
         Close();
     }

@@ -26,8 +26,8 @@
             <Setter Property="Stroke" Value="Black"/>
             <Setter Property="Fill" Value="White"/>
             <Setter Property="StrokePosition" Value="Outside"/>
-            <Setter Property="StrokeThickness" Value="2"/>
-            <Setter Property="FontSize" Value="56"/>
+            <Setter Property="StrokeThickness" Value="5"/>
+            <Setter Property="FontSize" Value="100"/>
         </Style>
     </Window.Resources>
 
@@ -40,7 +40,8 @@
 
         <Image Source="images/BackgroundTitle.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" />
 
-        <Button Style="{StaticResource MainButton}" >
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50">
+            <Button Style="{StaticResource MainButton}" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -50,7 +51,7 @@
             <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="START" />
         </Button>
 
-        <Button Style="{StaticResource MainButton}" Margin="0,105,0,0" >
+        <Button Style="{StaticResource MainButton}" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -61,7 +62,7 @@
         </Button>
 
 
-        <Button Style="{StaticResource MainButton}" Click="QuitButton_Click" Margin="0,205,0,0" >
+        <Button Style="{StaticResource MainButton}" Click="QuitButton_Click"  >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -70,5 +71,10 @@
 
             <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="QUIT" />
         </Button>
+        </StackPanel>
+        <Image x:Name="ArrowImage" Margin="420,290,0,0"  Source="/images/Arrow.png" Height="90"  Grid.Column="1"/>
+
+
+        <Image Source="/images/Title.png"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-89,0,0"  Width="752" Grid.Column="1" Height="710" ></Image>
     </Grid>
 </Window>
