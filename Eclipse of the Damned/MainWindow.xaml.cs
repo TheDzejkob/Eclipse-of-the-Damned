@@ -36,7 +36,7 @@ namespace Eclipse_of_the_Damned
         Inside
     }
     /// outline funkce done
-
+    /// outline funkce done/// outline funkce done/// outline funkce done/// outline funkce done
 
     [ContentProperty("Text")]
     public class OutlinedTextBlock : FrameworkElement
