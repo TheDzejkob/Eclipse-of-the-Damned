@@ -22,8 +22,12 @@ namespace Eclipse_of_the_Damned
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+
         }
-    private void StartButton_Click(object sender, RoutedEventArgs e)
+    private void QuitButton_Click(object sender, RoutedEventArgs e)
     {
         Close();
     }
@@ -36,7 +40,7 @@ namespace Eclipse_of_the_Damned
         Inside
     }
     /// outline funkce done
-    /// outline funkce done/// outline funkce done/// outline funkce done/// outline funkce done
+    
 
     [ContentProperty("Text")]
     public class OutlinedTextBlock : FrameworkElement

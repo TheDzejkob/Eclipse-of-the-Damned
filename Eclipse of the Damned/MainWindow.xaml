@@ -40,14 +40,35 @@
 
         <Image Source="images/BackgroundTitle.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" />
 
-        <Button Style="{StaticResource MainButton}" Click="StartButton_Click">
+        <Button Style="{StaticResource MainButton}" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </ControlTemplate>
             </Button.Template>
 
-            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="Start" />
+            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="START" />
+        </Button>
+
+        <Button Style="{StaticResource MainButton}" Margin="0,105,0,0" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ControlTemplate>
+            </Button.Template>
+
+            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="OPTIONS" />
+        </Button>
+
+
+        <Button Style="{StaticResource MainButton}" Click="QuitButton_Click" Margin="0,205,0,0" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ControlTemplate>
+            </Button.Template>
+
+            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="QUIT" />
         </Button>
     </Grid>
 </Window>
