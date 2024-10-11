@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Eclipse_of_the_Damned"
         mc:Ignorable="d"
         Title="MainWindow" Height="1024" Width="1440" Background="Black">
+
     <Window.Resources>
+        <!-- Button style definition -->
         <Style x:Key="MainButton" TargetType="Button">
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="FontSize" Value="100"/>
@@ -19,37 +21,33 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/fonts/#Jupiter Crash BRK"/>
         </Style>
+
         <Style x:Key="Outline" TargetType="local:OutlinedTextBlock">
-            
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Fill" Value="White"/>
+            <Setter Property="StrokePosition" Value="Outside"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="FontSize" Value="56"/>
         </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160*"/>
             <ColumnDefinition Width="370*"/>
             <ColumnDefinition Width="160*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="images/BackgroundTitle.jpeg"  Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" ></Image>
 
+        <Image Source="images/BackgroundTitle.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" />
 
-        <Button Style="{StaticResource MainButton}"  Click="StartButton_Click">
+        <Button Style="{StaticResource MainButton}" Click="StartButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </ControlTemplate>
             </Button.Template>
 
-            <!-- outline buttonu -->
-            <local:OutlinedTextBlock Stroke="Black" 
-                                     ClipToBounds="False"
-                                     FontSize="56" 
-                                     Fill="White"
-                                     StrokePosition="Outside"
-                                     StrokeThickness="2" 
-                                     Text="Start" 
-                                     FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" />
+            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="Start" />
         </Button>
-
-
     </Grid>
 </Window>
