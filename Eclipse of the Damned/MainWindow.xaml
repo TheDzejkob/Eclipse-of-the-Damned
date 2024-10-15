@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Eclipse_of_the_Damned"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1024" Width="1440" Background="Black">
+        Title="Eclipse of the Dammed" Height="1080" Width="1920" Background="Black" WindowState="Maximized">
 
     <Window.Resources>
         <!-- Button style definition -->
@@ -31,50 +31,46 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160*"/>
-            <ColumnDefinition Width="370*"/>
-            <ColumnDefinition Width="160*"/>
-        </Grid.ColumnDefinitions>
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1920" Height="1080">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160*"/>
+                <ColumnDefinition Width="370*"/>
+                <ColumnDefinition Width="160*"/>
+            </Grid.ColumnDefinitions>
 
-        <Image Source="images/BackgroundTitle.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" />
+            <Image Source="images/BackgroundTitle.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="3" />
 
-        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50">
-            <Button Style="{StaticResource MainButton}" >
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </ControlTemplate>
-            </Button.Template>
+            <Button VerticalAlignment="Bottom" Margin="0,0,0,250" Style="{StaticResource MainButton}" Click="StartButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ControlTemplate>
+                </Button.Template>
+                <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="START" />
+            </Button>
 
-            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="START" />
-        </Button>
+            <Button VerticalAlignment="Bottom" Margin="0,0,0,150" Style="{StaticResource MainButton}" Click="SettingsButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ControlTemplate>
+                </Button.Template>
+                <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="OPTIONS" />
+            </Button>
 
-        <Button Style="{StaticResource MainButton}" >
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </ControlTemplate>
-            </Button.Template>
+            <Button VerticalAlignment="Bottom" Margin="0,0,0,50" Style="{StaticResource MainButton}" Click="QuitButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ControlTemplate>
+                </Button.Template>
+                <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="QUIT" />
+            </Button>
 
-            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="OPTIONS" />
-        </Button>
+            <Image x:Name="ArrowImage" Margin="420,480,0,0" Source="/images/Arrow.png" Height="90" Grid.Column="1"/>
 
-
-        <Button Style="{StaticResource MainButton}" Click="QuitButton_Click"  >
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </ControlTemplate>
-            </Button.Template>
-
-            <local:OutlinedTextBlock Style="{StaticResource Outline}" Text="QUIT" />
-        </Button>
-        </StackPanel>
-        <Image x:Name="ArrowImage" Margin="420,290,0,0"  Source="/images/Arrow.png" Height="90"  Grid.Column="1"/>
-
-
-        <Image Source="/images/Title.png"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-89,0,0"  Width="752" Grid.Column="1" Height="710" ></Image>
-    </Grid>
+            <Image Source="/images/Title.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,-62,0,0" Width="752" Grid.Column="1" Height="710"/>
+        </Grid>
+    </Viewbox>
 </Window>

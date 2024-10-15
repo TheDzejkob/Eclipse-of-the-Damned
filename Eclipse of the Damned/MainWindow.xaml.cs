@@ -20,17 +20,17 @@ namespace Eclipse_of_the_Damned
     public partial class MainWindow : Window
     {
         private int swordcounter = 0;
+        int a = 0;
         public MainWindow()
         {
             InitializeComponent();
             CompositionTarget.Rendering += OnRendering;
 
 
-            
-
-            
-
         }
+
+        
+
         private void OnRendering(object sender, EventArgs e)
         {
          
@@ -41,12 +41,12 @@ namespace Eclipse_of_the_Damned
             if (Keyboard.IsKeyDown(Key.Up) || Keyboard.IsKeyDown(Key.W))
             {
                 swordcounter--;
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(100);
             }
             if (Keyboard.IsKeyDown(Key.Down))
             {
                 swordcounter++;
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(100);
             }
 
             
@@ -60,22 +60,53 @@ namespace Eclipse_of_the_Damned
             switch (swordcounter)
             {
                 case 0:
-                    ArrowImage.Margin = new Thickness(420, 290, 0, 0);
+                    ArrowImage.Margin = new Thickness(420, 480, 0, 0);
+                    if (Keyboard.IsKeyDown(Key.Enter))
+                    {
+                        StartButton_Click(null,null);
+                    }
                     break;
                 case 1:
-                    ArrowImage.Margin = new Thickness(420, 490, 0, 0);
+                    ArrowImage.Margin = new Thickness(420, 680, 0, 0);
+                    if (Keyboard.IsKeyDown(Key.Enter))
+                    {
+                        SettingsButton_Click(null, null);
+                    }
                     break;
                 case 2:
-                    ArrowImage.Margin = new Thickness(420, 690, 0, 0); 
+                    ArrowImage.Margin = new Thickness(420, 880, 0, 0);
+                    if (Keyboard.IsKeyDown(Key.Enter))
+                    {
+                        QuitButton_Click(null, null);
+                    }
                     break;
             }
         }
 
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (a == 0)
+            {
+            a ++;
+            CharacterCreator window = new CharacterCreator();
+            window.Show();
+            QuitButton_Click(null, null);
+            }
+
+
+
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+        {
+            Close();
+        }
 
     }
     public enum StrokePosition

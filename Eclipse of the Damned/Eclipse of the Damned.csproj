@@ -13,6 +13,8 @@
     <None Remove="fonts\jupiterc.ttf" />
     <None Remove="images\Arrow.png" />
     <None Remove="images\BackgroundTitle.jpeg" />
+    <None Remove="images\CharacterCreatorBackgroud.jpeg" />
+    <None Remove="images\characterPlaceholder.png" />
     <None Remove="images\Title.png" />
   </ItemGroup>
 
@@ -24,6 +26,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\BackgroundTitle.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\CharacterCreatorBackgroud.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\characterPlaceholder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\Title.png">
