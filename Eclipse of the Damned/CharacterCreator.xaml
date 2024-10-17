@@ -14,7 +14,7 @@
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="60*"/>
                 <RowDefinition Height="919*"/>
-                <RowDefinition Height="60*"/>
+                <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
@@ -78,14 +78,14 @@
             <Border Background="#0c2330" CornerRadius="10" Margin="0,470,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
 
 
-            <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,615,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Class</Label>
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,670,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,670,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,670,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,610,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Class</Label>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
 
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,820,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,820,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,820,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
 
         </Grid>
     </Viewbox>
