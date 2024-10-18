@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="\images\CharacterCreatorBackgroud.jpeg" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+            <Image Source="\images\CharacterCreatorBackgroud.png" Opacity="0.8" Margin="-158,-30,-158,-34" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
 
 
 
@@ -65,27 +65,67 @@
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,25,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Edit Appearance</Label>
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,75,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Gender</Label>
 
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
+            <Border  Background="#0c2330" CornerRadius="10" Margin="50,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Tag="1" Background="Transparent" BorderBrush="Transparent" Click="GenderButton_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Tag="2" Background="Transparent" BorderBrush="Transparent" Click="GenderButton_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Border>
 
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,265,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Race</Label>
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,320,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderBrush="Transparent" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK"  >Human</Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,320,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
 
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,470,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,470,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
 
 
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,610,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Class</Label>
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,660,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
 
-            <Border Background="#0c2330" CornerRadius="10" Margin="50,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"></Border>
-            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" ></Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="50,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+            </Border>
+            <Border Background="#0c2330" CornerRadius="10" Margin="0,810,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
+                <Button Background="Transparent" BorderBrush="Transparent" ></Button>
+            </Border>
 
         </Grid>
     </Viewbox>

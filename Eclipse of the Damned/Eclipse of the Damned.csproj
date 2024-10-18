@@ -11,9 +11,10 @@
 
   <ItemGroup>
     <None Remove="fonts\jupiterc.ttf" />
+    <None Remove="GameAssets.db" />
     <None Remove="images\Arrow.png" />
-    <None Remove="images\BackgroundTitle.jpeg" />
-    <None Remove="images\CharacterCreatorBackgroud.jpeg" />
+    <None Remove="images\BackgroundTitle.png" />
+    <None Remove="images\CharacterCreatorBackgroud.png" />
     <None Remove="images\characterPlaceholder.png" />
     <None Remove="images\Title.png" />
   </ItemGroup>
@@ -22,13 +23,16 @@
     <Resource Include="fonts\jupiterc.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="GameAssets.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\BackgroundTitle.jpeg">
+    <Content Include="images\BackgroundTitle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\CharacterCreatorBackgroud.jpeg">
+    <Content Include="images\CharacterCreatorBackgroud.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\characterPlaceholder.png">
@@ -37,6 +41,10 @@
     <Content Include="images\Title.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
 </Project>
