@@ -67,6 +67,7 @@
 
             <Border  Background="#0c2330" CornerRadius="10" Margin="50,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Button Tag="1" Background="Transparent" BorderBrush="Transparent" Click="GenderButton_Click" >
+                    <Image Source="images/Female.png" Height="80"  HorizontalAlignment="Center"  VerticalAlignment="Center" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -76,6 +77,7 @@
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,130,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Button Tag="2" Background="Transparent" BorderBrush="Transparent" Click="GenderButton_Click" >
+                <Image Source="images/Male.png" Height="80"  HorizontalAlignment="Center"  VerticalAlignment="Center" />
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
@@ -86,45 +88,117 @@
 
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,265,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Race</Label>
             <Border Background="#0c2330" CornerRadius="10" Margin="50,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Background="Transparent" BorderBrush="Transparent" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK"  >Human</Button>
+                <Button Tag="1" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Human
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,320,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="2" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Elf
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,320,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="3" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Orc
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
 
             <Border Background="#0c2330" CornerRadius="10" Margin="50,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="4" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Dwarf
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,470,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="5" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Goblin
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,470,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="6" Background="Transparent" BorderBrush="Transparent" Click="RaceButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Corvum
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
 
 
             <Label Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,610,0,0" FontSize="35" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" >Class</Label>
             <Border Background="#0c2330" CornerRadius="10" Margin="50,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="1" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Warrior
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,660,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="2" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Archer
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,660,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="3" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Mage
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
 
             <Border Background="#0c2330" CornerRadius="10" Margin="50,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="4" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Bard
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,810,0,0" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderBrush="Transparent"></Button>
+                <Button Tag="5" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Thief
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
             <Border Background="#0c2330" CornerRadius="10" Margin="0,810,50,0" HorizontalAlignment="Right" Width="120" Height="120" Grid.Column="3" Grid.Row="2" VerticalAlignment="Top" >
-                <Button Background="Transparent" BorderBrush="Transparent" ></Button>
+                <Button Tag="6" Background="Transparent" BorderBrush="Transparent" Click="ClassButton_Click" Foreground="White" FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK">Rogue
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Border>
 
         </Grid>
