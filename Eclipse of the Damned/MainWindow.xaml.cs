@@ -11,14 +11,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Eclipse_of_the_Damned.classy;
 
 namespace Eclipse_of_the_Damned
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
+        public GameMaster gameMaster;
         private int swordcounter = 0;
         int a = 0;
         public MainWindow()
@@ -26,6 +29,7 @@ namespace Eclipse_of_the_Damned
             InitializeComponent();
             CompositionTarget.Rendering += OnRendering;
 
+            gameMaster = new GameMaster(null,false,true,1,1);
 
         }
 
@@ -87,14 +91,11 @@ namespace Eclipse_of_the_Damned
         {
             if (a == 0)
             {
-            a ++;
-            CharacterCreator window = new CharacterCreator();
-            window.Show();
-            QuitButton_Click(null, null);
+                a++;
+                CharacterCreator window = new CharacterCreator(gameMaster);
+                window.Show();
+                QuitButton_Click(null, null);
             }
-
-
-
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
