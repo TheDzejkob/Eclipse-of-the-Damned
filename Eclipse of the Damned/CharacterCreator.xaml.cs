@@ -1,5 +1,6 @@
 ﻿using Eclipse_of_the_Damned.classy;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,6 +22,8 @@ namespace Eclipse_of_the_Damned
         public Class thief;
         public Class rogue;
 
+        public Class selectedClass;
+
         //Rasy
         public Race human;
         public Race elf;
@@ -39,6 +42,9 @@ namespace Eclipse_of_the_Damned
 
         public Button SelectedClassButton;
         public Button _previouslySelectedClassButton;
+        public List<Class> classes;
+
+
 
         public CharacterCreator(GameMaster gameMaster)
         {
@@ -46,15 +52,18 @@ namespace Eclipse_of_the_Damned
             this.gameMaster = gameMaster;
 
             player = new Entity("ingác", 0, 0, 1, 0, null, null, null, true);
-            
-            //class
-            warrior = new Class("Warrior",1);
-            archer = new Class("Archer",2);
-            mage = new Class("Mage",3);
-            bard = new Class("Bard",4);
-            thief = new Class("Thief",5);
-            rogue = new Class("Rogue",6);
 
+            //class
+            warrior = new Class("Warrior", 0);
+            archer = new Class("Archer", 1);
+            mage = new Class("Mage", 2);
+            bard = new Class("Bard", 3);
+            thief = new Class("Thief", 4);
+            rogue = new Class("Rogue", 5);
+
+            classes = new List<Class>() { warrior, archer, mage, bard, thief, rogue};
+            
+            
             //race
             human = new Race("Human",1);
             elf = new Race("Elf",2);
@@ -71,6 +80,10 @@ namespace Eclipse_of_the_Damned
         private void CreateCharacter_Click(object sender, RoutedEventArgs e)
         {
             player.EntityName = NameTextBox.Text;
+            int classesIndex = Convert.ToInt32(SelectedClassButton.Tag);
+            player.EntityClass = classes[classesIndex];
+             
+
         }
 
 

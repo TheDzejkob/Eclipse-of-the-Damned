@@ -57,7 +57,7 @@
                 <TextBox x:Name="NameTextBox" Background="Transparent" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="40" TextAlignment="Center" VerticalAlignment="Center" Text="Enter your name..." GotFocus="NameTextBox_GotFocus" LostFocus="NameTextBox_LostFocus" BorderBrush="Transparent"/>
             </Border>
             <Border Background="#0c2330" Grid.Column="1" Grid.Row="2" Height="105" Margin="60,773,60,0" VerticalAlignment="Top" BorderBrush="White" CornerRadius="20" BorderThickness="2">
-                <Button Background="Transparent" Content="Create Character" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="58" BorderBrush="Transparent" Click="" ></Button>
+                <Button Background="Transparent" Content="Create Character" Foreground="White" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="58" BorderBrush="Transparent" Click="CreateCharacter_Click" ></Button>
             </Border>
             <Image Grid.Column="1" Grid.Row="2" Margin="30,120,30,190" Source="/images/characterPlaceholder.png" Stretch="UniformToFill"></Image>
 
