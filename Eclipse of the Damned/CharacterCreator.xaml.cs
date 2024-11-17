@@ -1,6 +1,7 @@
 ﻿using Eclipse_of_the_Damned.classy;
 using System;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,6 +22,7 @@ namespace Eclipse_of_the_Damned
         public Class bard;
         public Class thief;
         public Class rogue;
+
 
         public Class selectedClass;
 
@@ -43,6 +45,7 @@ namespace Eclipse_of_the_Damned
         public Button SelectedClassButton;
         public Button _previouslySelectedClassButton;
         public List<Class> classes;
+        public List<Race> races;
 
 
 
@@ -65,24 +68,28 @@ namespace Eclipse_of_the_Damned
             
             
             //race
-            human = new Race("Human",1);
-            elf = new Race("Elf",2);
-            orc = new Race("Orc",3);
-            dwarf = new Race("Dwarf",4);
-            goblin = new Race("Goblin",5);
-            corvum = new Race("Corvum",6);
+            human = new Race("Human",0);
+            elf = new Race("Elf",1);
+            orc = new Race("Orc",2);
+            dwarf = new Race("Dwarf",3);
+            goblin = new Race("Goblin",4);
+            corvum = new Race("Corvum",5);
+
+            races = new List<Race>() { human, elf, orc, dwarf, goblin, corvum };
 
             gameMaster.Player = player;
 
         }
 
-
+        
         private void CreateCharacter_Click(object sender, RoutedEventArgs e)
         {
             player.EntityName = NameTextBox.Text;
             int classesIndex = Convert.ToInt32(SelectedClassButton.Tag);
+            int racesIndex = Convert.ToInt32(SelectedRaceButton.Tag);
+
             player.EntityClass = classes[classesIndex];
-             
+            player.EntityRace = races[racesIndex]; 
 
         }
 
