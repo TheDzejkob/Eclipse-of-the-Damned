@@ -47,7 +47,8 @@ namespace Eclipse_of_the_Damned
         public List<Class> classes;
         public List<Race> races;
 
-
+        int? classesIndex;
+        int? racesIndex;
 
         public CharacterCreator(GameMaster gameMaster)
         {
@@ -81,16 +82,23 @@ namespace Eclipse_of_the_Damned
 
         }
 
-        
+
         private void CreateCharacter_Click(object sender, RoutedEventArgs e)
         {
-            player.EntityName = NameTextBox.Text;
-            int classesIndex = Convert.ToInt32(SelectedClassButton.Tag);
-            int racesIndex = Convert.ToInt32(SelectedRaceButton.Tag);
+            if (classesIndex == null || racesIndex == null || NameTextBox.Text == null || NameTextBox.Text == "Enter your name...")
+            {
+                WarningCanvas.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                player.EntityName = NameTextBox.Text;
+                player.EntityClass = classes[classesIndex.Value];
+                player.EntityRace = races[racesIndex.Value];
 
-            player.EntityClass = classes[classesIndex];
-            player.EntityRace = races[racesIndex]; 
-
+                InGame window = new InGame();
+                window.Show();
+                this.Close();
+            }
         }
 
 
@@ -138,7 +146,8 @@ namespace Eclipse_of_the_Damned
         {
             if (sender is Button clickedButton)
             {
-                SelectedRaceButton = clickedButton; 
+                SelectedRaceButton = clickedButton;
+                racesIndex = Convert.ToInt32(SelectedRaceButton.Tag);
                 if (_previouslySelectedRaceButton != null)
                 {
                     _previouslySelectedRaceButton.BorderBrush = Brushes.Transparent;
@@ -157,6 +166,7 @@ namespace Eclipse_of_the_Damned
             if (sender is Button clickedButton)
             {
                 SelectedClassButton = clickedButton;
+                classesIndex = Convert.ToInt32(SelectedClassButton.Tag);
                 if (_previouslySelectedClassButton != null)
                 {
                     _previouslySelectedClassButton.BorderBrush = Brushes.Transparent;
@@ -168,6 +178,11 @@ namespace Eclipse_of_the_Damned
 
                 _previouslySelectedClassButton = clickedButton;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WarningCanvas.Visibility = Visibility.Collapsed;
         }
     }
 }

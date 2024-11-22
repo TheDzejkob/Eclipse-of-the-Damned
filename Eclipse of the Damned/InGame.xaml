@@ -1,0 +1,20 @@
+﻿<Window x:Class="Eclipse_of_the_Damned.InGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eclipse_of_the_Damned"
+        mc:Ignorable="d"
+        Title="InGame"  Height="1080" Width="1920" Background="Black" WindowState="Maximized">
+    <Grid>
+        <Viewbox Stretch="Uniform">
+
+            <Grid Width="1920" Height="1080">
+                
+                <Image Stretch="Fill" Source="/images/InGameBasicBackground.png" Opacity="0.8" Margin="-158,-30,-158,-34"  />
+                <Border Width="1800" VerticalAlignment="Top" Height="80" Background="#103445"></Border>
+
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
