@@ -95,7 +95,7 @@ namespace Eclipse_of_the_Damned
                 player.EntityClass = classes[classesIndex.Value];
                 player.EntityRace = races[racesIndex.Value];
 
-                InGame window = new InGame();
+                InGame window = new InGame(gameMaster);
                 window.Show();
                 this.Close();
             }

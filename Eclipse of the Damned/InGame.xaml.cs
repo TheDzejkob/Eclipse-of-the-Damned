@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eclipse_of_the_Damned.classy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,13 @@ namespace Eclipse_of_the_Damned
     /// </summary>
     public partial class InGame : Window
     {
-        public InGame()
+        private GameMaster gameMaster;
+
+        public InGame(GameMaster gameMaster)
         {
             InitializeComponent();
+            this.gameMaster = gameMaster;
+            test.Content =  gameMaster.Player.EntityName + " " + gameMaster.Player.EntityClass.ClassName + " " + gameMaster.Player.EntityRace.RaceName;
         }
     }
 }

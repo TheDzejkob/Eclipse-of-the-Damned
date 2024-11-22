@@ -13,7 +13,7 @@
                 
                 <Image Stretch="Fill" Source="/images/InGameBasicBackground.png" Opacity="0.8" Margin="-158,-30,-158,-34"  />
                 <Border Width="1800" VerticalAlignment="Top" Height="80" Background="#103445"></Border>
-
+                <Label x:Name="test" ></Label>
             </Grid>
         </Viewbox>
     </Grid>
