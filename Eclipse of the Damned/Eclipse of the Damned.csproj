@@ -16,6 +16,10 @@
     <None Remove="images\CharacterCreatorBackgroud.png" />
     <None Remove="images\characterPlaceholder.png" />
     <None Remove="images\Female.png" />
+    <None Remove="images\Icons\book.png" />
+    <None Remove="images\Icons\clock.png" />
+    <None Remove="images\Icons\map.png" />
+    <None Remove="images\Icons\settings.png" />
     <None Remove="images\InGameBasicBackground.png" />
     <None Remove="images\Male.png" />
     <None Remove="images\Title.png" />
@@ -38,6 +42,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\Female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Icons\book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Icons\clock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Icons\map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Icons\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\InGameBasicBackground.png">

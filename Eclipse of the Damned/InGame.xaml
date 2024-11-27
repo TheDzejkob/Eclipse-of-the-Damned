@@ -12,8 +12,23 @@
             <Grid Width="1920" Height="1080">
                 
                 <Image Stretch="Fill" Source="/images/InGameBasicBackground.png" Opacity="0.8" Margin="-158,-30,-158,-34"  />
-                <Border Width="1800" VerticalAlignment="Top" Height="80" Background="#103445"></Border>
+                <Border Background="#071821" Width="1800" Height="105" Margin="0,-15,0,0" VerticalAlignment="Top">
+                    
+                    <Border Margin="15" Background="#103445"></Border>
+                </Border>
                 <Label x:Name="test" ></Label>
+                <Image Source="/images/Icons/clock.png" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="80,10,0,0" />
+                <Label x:Name="Time" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="80" Margin="160,-10,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"> 8:00</Label>
+
+                <Image Source="/images/Icons/callendar.png" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="330,8,0,0" />
+                <Label x:Name="Day" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="80" Margin="430,-10,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" >Day 1. /</Label>
+                
+                
+                <Border Margin="0,-10,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent">
+                    <Button x:Name="Settings" Background="Transparent" BorderBrush="Transparent">
+                        <Image Source="/images/Icons/settings.png" Height="90" />
+                    </Button>
+                </Border>
             </Grid>
         </Viewbox>
     </Grid>
