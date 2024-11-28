@@ -37,5 +37,27 @@ namespace Eclipse_of_the_Damned
             Time.Content = DateTime.Now.ToString("HH:mm");
             Day.Content = DateTime.Now.ToString("Day 1. / " + "dddd", enUs);
         }
+
+        private void GearMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (GearMenu.Visibility == Visibility.Visible)
+                GearMenu.Visibility = Visibility.Hidden;
+            else
+                GearMenu.Visibility = Visibility.Visible;
+        }
+
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MainMenuButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            MainWindow mainMenu = new MainWindow();
+            mainMenu.Show();
+            this.Close();
+        }
     }
 }
