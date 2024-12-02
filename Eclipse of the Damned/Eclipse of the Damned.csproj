@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\JMH Cthulhumbus Arcade UG.ttf" />
     <None Remove="fonts\jupiterc.ttf" />
     <None Remove="images\Arrow.png" />
     <None Remove="images\BackgroundTitle.png" />
@@ -27,6 +28,9 @@
 
   <ItemGroup>
     <Resource Include="fonts\jupiterc.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="fonts\JMH Cthulhumbus Arcade UG.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Content Include="images\Arrow.png">
@@ -69,6 +73,10 @@
 
   <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="images\Items\" />
   </ItemGroup>
 
 </Project>

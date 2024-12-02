@@ -27,15 +27,23 @@ namespace Eclipse_of_the_Damned
         {
             InitializeComponent();
             this.gameMaster = gameMaster;
-            test.Content = gameMaster.Player.EntityName + " " + gameMaster.Player.EntityClass.ClassName + " " + gameMaster.Player.EntityRace.RaceName;
             updateTime();
         }
 
         private void updateTime()
         {
-            var enUs = new CultureInfo("en-US");
             Time.Content = DateTime.Now.ToString("HH:mm");
-            Day.Content = DateTime.Now.ToString("Day 1. / " + "dddd", enUs);
+            var enUs = new CultureInfo("en-US");
+            Day.Content = "Day 1. / " + DateTime.Now.ToString("dddd", enUs);
+        }
+
+
+        private void BookMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (BookMenu.Visibility == Visibility.Visible)
+                BookMenu.Visibility = Visibility.Hidden;
+            else
+                BookMenu.Visibility = Visibility.Visible;
         }
 
         private void GearMenu_Click(object sender, RoutedEventArgs e)

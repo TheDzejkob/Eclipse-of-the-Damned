@@ -16,12 +16,12 @@
                     
                     <Border Margin="15" Background="#103445"></Border>
                 </Border>
-                <Label x:Name="test" ></Label>
+                
                 <Image Source="/images/Icons/clock.png" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="80,10,0,0" />
                 <Label x:Name="Time" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="80" Margin="160,-10,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"> 8:00</Label>
 
                 <Image Source="/images/Icons/callendar.png" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="330,8,0,0" />
-                <Label x:Name="Day" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="80" Margin="430,-10,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" >Day 1. /</Label>
+                <Label x:Name="Day" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" FontSize="80" Margin="430,-10,0,0" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" >Day 1. / Monday</Label>
                 
                 
                 <Border Margin="0,-10,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent" >
@@ -55,10 +55,122 @@
                 </Border>
 
                 <Border Margin="0,-10,280,0" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent" >
-                    <Button x:Name="Book" Background="Transparent" BorderBrush="Transparent" >
+                    <Button x:Name="Book" Background="Transparent" BorderBrush="Transparent" Click="BookMenu_Click" >
                         <Image Source="/images/Icons/book.png" Height="90" />
                     </Button>
                 </Border>
+                
+                <!-- Book popup menu -->
+                <Border Visibility="Collapsed" x:Name="BookMenu" Width="200" VerticalAlignment="Top" Background="#071821" Height="200" HorizontalAlignment="Right" Margin="0,75,225,0">
+                    <StackPanel  Width="170" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15,15,15,15">
+                        <Button  FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" Background="#103445" BorderThickness="0">
+                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Inventory</local:OutlinedTextBlock>
+                        </Button>
+                        <Button FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK"  Background="#0F2E3C" BorderThickness="0" >
+                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Bestiary</local:OutlinedTextBlock>
+                        </Button>
+                        <Button FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" Background="#103445" BorderThickness="0"  >
+                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Guide</local:OutlinedTextBlock>
+                        </Button>
+                        <Button FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK"  Background="#0F2E3C" BorderThickness="0" >
+                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Character</local:OutlinedTextBlock>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <!-- *** -->
+                <!-- Inventory -->
+                <Border Background="#071821" Width="730" Height="910" Margin="60,120,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Border Background="#103445" VerticalAlignment="Center" HorizontalAlignment="Center" Height="880" Width="700">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="Transparent">
+                            <StackPanel>
+                                <local:OutlinedTextBlock Margin="0,20,0,10" HorizontalAlignment="Center" FontSize="70" 
+                                        FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                                         StrokeThickness="5" Stroke="Black" Fill="White">Inventory</local:OutlinedTextBlock>
+
+                                <!-- Inventory Slots -->
+                                <UniformGrid Columns="4" HorizontalAlignment="Center">
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15" />
+
+                                </UniformGrid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Border>
+                <!-- *** -->
+
+                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="385" Height="560" Background="#071821" Margin="15,-90,0,0"   >
+                    <Border Background="#103445" Width="355" Height="530">
+                        <StackPanel>
+                            <local:OutlinedTextBlock Margin="10,10,0,0" HorizontalAlignment="Left" FontSize="30" 
+                            FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" 
+                            StrokeThickness="2" Stroke="Black" Fill="White">'Item name'</local:OutlinedTextBlock>
+                            <Border Width="170" Height="100" CornerRadius="5" Background="#0B232F" Margin="0,0,165,0"  >
+                                <local:OutlinedTextBlock x:Name="Discription" Margin="10" HorizontalAlignment="Left" FontSize="20" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" 
+                                StrokeThickness="2" VerticalAlignment="Top" Stroke="Black" Fill="White"  >default</local:OutlinedTextBlock>
+                            </Border>
+                            <Border Width="130" Height="130" CornerRadius="10" Background="#0B232F" Margin="180,-130,0,0" >
+                                <Image x:Name="ItemDisplay" Stretch="UniformToFill"/> 
+                            </Border>
+
+                            <StackPanel>
+                                <local:OutlinedTextBlock  Margin="10" HorizontalAlignment="Left" FontSize="30" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Information</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Category</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Weight</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Value</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Rarity</local:OutlinedTextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <local:OutlinedTextBlock  Margin="10" HorizontalAlignment="Left" FontSize="30"  FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Ability</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Ability 1</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Ability 2</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Ability 3</local:OutlinedTextBlock>
+                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Ability 4</local:OutlinedTextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="Transparent" Margin="0,20,0,0" >
+
+                                <Button Background="Transparent" Margin="1" Height="50" BorderBrush="Transparent">
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Equip</local:OutlinedTextBlock>
+                                </Button>
+                                <Button Background="Transparent" Margin="1" Height="50" BorderBrush="Transparent">
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Consume</local:OutlinedTextBlock>
+                                </Button>
+                                <Button Background="Transparent" Margin="1" Height="50"  BorderBrush="Transparent">
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Inspect</local:OutlinedTextBlock>
+                                </Button>
+                                <Button Background="Transparent" Margin="1" Height="50"  BorderBrush="Transparent">
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Drop</local:OutlinedTextBlock>
+
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Border>
+
+             
+
             </Grid>
         </Viewbox>
     </Grid>

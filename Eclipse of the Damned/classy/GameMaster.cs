@@ -15,13 +15,16 @@ namespace Eclipse_of_the_Damned.classy
         public float MasterVolume { get; set; }
         public float MusicVolume { get; set; }
 
-        public GameMaster(Entity player, bool inCombat, bool playerTurn, float masterVolume, float musicVolume)
+        public bool Fullscreen { get; set; }
+
+        public GameMaster(Entity player, bool inCombat, bool playerTurn, float masterVolume, float musicVolume, bool fullscreen)
         {
             Player = player;
             InCombat = inCombat;
             PlayerTurn = playerTurn;
             MasterVolume = masterVolume;
             MusicVolume = musicVolume;
+            Fullscreen = fullscreen;
         }
     }
 }
