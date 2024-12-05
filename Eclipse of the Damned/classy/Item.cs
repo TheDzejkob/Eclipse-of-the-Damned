@@ -14,16 +14,16 @@ namespace Eclipse_of_the_Damned.classy
         public string Type { get; set; }
         public float Durability { get; set; }
 
-        public string ImgPath { get; set; }
+        public string ImagePath { get; set; }
 
-        public Item(int id, string name, string description, string type, float durability, string imgpath) 
+        public Item(int id, string name, string description, string type, float durability, string imagePath) 
         {
             Id = id;
             Name = name;
             Description = description;
             Type = type;
             Durability = durability;
-            ImgPath = imgpath;
+            ImagePath = imagePath;
         }
     }
 }
