@@ -32,14 +32,19 @@ namespace Eclipse_of_the_Damned
             this.gameMaster = gameMaster;
             updateTime();
             stick = new Item(0, "stick", "je to prostě stick", "material", 1, "/images/Items/sword.png");
-            test = new Item(0, "test", "test more", "weapon", 0.1f, "/images/Items/Arrow.png");
+            test = new Item(1, "test", "negr bagr", "material", 1, "/images/Arrow.png");
+
 
             gameMaster.Player.Inventory.Add(stick);
             gameMaster.Player.Inventory.Add(test);
             updateInventory();
         }
-
-        private void updateItemDetail()
+        private void TestClick(object sender, RoutedEventArgs e)
+        {
+            SelectedInventoryItem = stick;
+            updateItemDetail(sender, e);
+        }
+        private void updateItemDetail(object sender, RoutedEventArgs e)
         {
             if (SelectedInventoryItem != null)
             {
@@ -51,12 +56,13 @@ namespace Eclipse_of_the_Damned
 
                 // Update the item image
                 ItemDisplay.Source = new BitmapImage(new Uri(SelectedInventoryItem.ImagePath, UriKind.Relative));
+                
             }
             else
             {
                 // Clear the fields if no item is selected
-                ItemName.Text = string.Empty;
-                Discription.Text = string.Empty;
+                ItemName.Text = "prazdny";
+                Discription.Text = "prazdny";
                 ItemDisplay.Source = null;
             }
         }
@@ -95,20 +101,16 @@ namespace Eclipse_of_the_Damned
                 return;
 
             var tag = clickedButton.Tag;
+            int value = Convert.ToInt32(tag);
             if (tag == null)
-                return;
-
-            if (int.TryParse(tag.ToString(), out int index))
             {
-                if (index >= 0 && index < gameMaster.Player.Inventory.Count)
-                {
-                    // Set the selected inventory item
-                    SelectedInventoryItem = gameMaster.Player.Inventory[index];
-
-                    // Update the item details in the UI
-                    updateItemDetail();
-                }
+                SelectedInventoryItem = null;
             }
+
+            SelectedInventoryItem = gameMaster.Player.Inventory[value];
+
+            updateItemDetail(sender, e);
+
         }
 
         private void updateTime()

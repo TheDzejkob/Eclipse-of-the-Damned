@@ -12,7 +12,6 @@
   <ItemGroup>
     <None Remove="fonts\JMH Cthulhumbus Arcade UG.ttf" />
     <None Remove="fonts\jupiterc.ttf" />
-    <None Remove="images\Arrow.png" />
     <None Remove="images\BackgroundTitle.png" />
     <None Remove="images\CharacterCreatorBackgroud.png" />
     <None Remove="images\characterPlaceholder.png" />
@@ -40,7 +39,7 @@
     <Resource Include="fonts\JMH Cthulhumbus Arcade UG.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="images\Items\Arrow.png">
+    <Content Include="images\Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\BackgroundTitle.png">
