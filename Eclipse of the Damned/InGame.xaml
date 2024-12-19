@@ -60,8 +60,8 @@
                 <!-- Book popup menu -->
                 <Border Visibility="Collapsed" x:Name="BookMenu" Width="200" VerticalAlignment="Top" Background="#071821" Height="200" HorizontalAlignment="Right" Margin="0,75,225,0">
                     <StackPanel  Width="170" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15,15,15,15">
-                        <Button  FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" Background="#103445" BorderThickness="0">
-                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Inventory</local:OutlinedTextBlock>
+                        <Button  FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK" Background="#103445" BorderThickness="0" Click="InventoryOpenButton_Click">
+                            <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White">Inventory</local:OutlinedTextBlock>
                         </Button>
                         <Button FontSize="35" FontFamily="pack://application:,,,/fonts/#Jupiter Crash BRK"  Background="#0F2E3C" BorderThickness="0" >
                             <local:OutlinedTextBlock HorizontalAlignment="Left" Height="40" Width="160" StrokeThickness="1" Stroke="Black" Fill="White" >Bestiary</local:OutlinedTextBlock>
@@ -76,7 +76,7 @@
                 </Border>
                 <!-- *** -->
                 <!-- Inventory -->
-                <Border Background="#071821" Width="730" Height="910" Margin="60,120,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Border x:Name="Inventory" Visibility="Collapsed" Background="#071821" Width="730" Height="910" Margin="60,120,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <Border Background="#103445" VerticalAlignment="Center" HorizontalAlignment="Center" Height="880" Width="700">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="Transparent">
                             <StackPanel>
@@ -213,7 +213,8 @@
                 </Border>
                 <!-- *** -->
 
-                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="385" Height="560" Background="#071821" Margin="15,-90,0,0"   >
+                <!-- Item Detail -->
+                <Border x:Name="itemDetail" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" Width="385" Height="560" Background="#071821" Margin="15,-90,0,0"   >
                     <Border Background="#103445" Width="355" Height="530">
                         <StackPanel>
                             <local:OutlinedTextBlock x:Name="ItemName" Margin="10,10,0,0" HorizontalAlignment="Left" FontSize="30" 
@@ -229,11 +230,20 @@
 
                             <StackPanel>
                                 <local:OutlinedTextBlock  Margin="10" HorizontalAlignment="Left" FontSize="30" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Information</local:OutlinedTextBlock>
-                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Category</local:OutlinedTextBlock>
-                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Weight</local:OutlinedTextBlock>
-                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Value</local:OutlinedTextBlock>
-                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Rarity</local:OutlinedTextBlock>
-                                <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Durability</local:OutlinedTextBlock>
+                                <StackPanel HorizontalAlignment="Left" Width="100">
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Category:</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Weight:</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Value:</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Rarity:</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >Durability:</local:OutlinedTextBlock>
+                                </StackPanel>
+                                <StackPanel HorizontalAlignment="Right"  Margin="0,-115,0,0">
+                                    <local:OutlinedTextBlock x:Name="ItemCategory"  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >default category</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock x:Name="ItemWeight" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >0kg</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock x:Name="ItemValue" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >10</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock x:Name="ItemRarity" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >rare</local:OutlinedTextBlock>
+                                    <local:OutlinedTextBlock x:Name="ItemDurability"  Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG" StrokeThickness="2" Stroke="Black" Fill="White"  >0.1</local:OutlinedTextBlock>
+                                </StackPanel>
 
                             </StackPanel>
                             <StackPanel>
@@ -260,10 +270,8 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
+                    <!-- *** -->
                 </Border>
-                <Button Background="White" Click="TestClick" Width="50" Height="50">
-                    <Image Name="InventorySlotTest" Tag="0" Stretch="Uniform" />
-                </Button>
             </Grid>
         </Viewbox>
     </Grid>

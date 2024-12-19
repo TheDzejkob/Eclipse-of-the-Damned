@@ -31,21 +31,22 @@ namespace Eclipse_of_the_Damned
             InitializeComponent();
             this.gameMaster = gameMaster;
             updateTime();
-            stick = new Item(0, "stick", "je to prostě stick", "material", 1, "/images/Items/sword.png");
-            test = new Item(1, "test", "negr bagr", "material", 1, "/images/Arrow.png");
+            stick = new Item(0, "stick", "je to prostě stick", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Items/sword.png");
+            test = new Item(1, "test", "negr bagr", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Arrow.png");
 
 
             gameMaster.Player.Inventory.Add(stick);
             gameMaster.Player.Inventory.Add(test);
             updateInventory();
         }
-        private void TestClick(object sender, RoutedEventArgs e)
-        {
-            SelectedInventoryItem = stick;
-            updateItemDetail(sender, e);
-        }
+        //private void TestClick(object sender, RoutedEventArgs e)
+        //{
+        //    SelectedInventoryItem = stick;
+        //    updateItemDetail(sender, e);
+        //}
         private void updateItemDetail(object sender, RoutedEventArgs e)
         {
+            itemDetail.Visibility = Visibility.Visible;
             if (SelectedInventoryItem != null)
             {
                 // Update the item name
@@ -56,7 +57,29 @@ namespace Eclipse_of_the_Damned
 
                 // Update the item image
                 ItemDisplay.Source = new BitmapImage(new Uri(SelectedInventoryItem.ImagePath, UriKind.Relative));
-                
+
+                ItemCategory.Text = SelectedInventoryItem.Category;
+                ItemWeight.Text = SelectedInventoryItem.Weight.ToString();
+                ItemValue.Text = SelectedInventoryItem.Value.ToString();
+                switch (SelectedInventoryItem.Rarity)
+                {
+                    case 1:
+                        ItemRarity.Text = "Common";
+                        break;
+                    case 2:
+                        ItemRarity.Text = "Rare";
+                        break;
+                    case 3:
+                        ItemRarity.Text = "Epic";
+                        break;
+                    case 4:
+                        ItemRarity.Text = "Legendary";
+                        break;
+                }
+                ItemDurability.Text = SelectedInventoryItem.Durability * 100 + "%";
+
+
+
             }
             else
             {
@@ -65,6 +88,23 @@ namespace Eclipse_of_the_Damned
                 Discription.Text = "prazdny";
                 ItemDisplay.Source = null;
             }
+        }
+
+        private void addToInventory(List<Item> items)
+        {
+            foreach (var item in items)
+            {
+                gameMaster.Player.Inventory.Add(item);
+            }
+            updateInventory();
+        }
+        private void takeFromInventory(List<Item> items)
+        {
+            foreach (var item in items)
+            {
+                gameMaster.Player.Inventory.Remove(item);
+            }
+            updateInventory();
         }
 
         private void updateInventory()
@@ -150,6 +190,17 @@ namespace Eclipse_of_the_Damned
             MainWindow mainMenu = new MainWindow();
             mainMenu.Show();
             this.Close();
+        }
+
+        private void InventoryOpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Inventory.Visibility == Visibility.Visible) { 
+
+                Inventory.Visibility = Visibility.Hidden;
+                itemDetail.Visibility = Visibility.Hidden;
+            }
+            else
+                Inventory.Visibility = Visibility.Visible;
         }
     }
 }

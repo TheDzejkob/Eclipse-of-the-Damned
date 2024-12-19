@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 0, //vždicky začíná od 0 a o jedno větší než to nad ním
+    "Name": "stick",
+    "Description": "A stick",
+    "Category": "Material", //weapon, armor, potion, food, misc, material(for crafting and shiz) apod.
+    "Value": 1,
+    "Rarity": 1, // 1 common, 2 rare, 3 epic, 4 legendary
+    "Durability": 1, //od 1.00 až do 0.00
+    "Heal": 0, //pokud 0 není heal item
+    "Armor": 0, //pokud 0 není armor piece 
+    "ImagePath": "/images/stick.png"
+  },
+  {
+    "Id": 1, //vždicky začíná od 0 a o jedno větší než to nad ním
+    "Name": "sword",
+    "Description": "a shgarp sword idk",
+    "Category": "Weapon", //weapon, armor, potion, food, misc, material(for crafting and shiz) apod.
+    "Value": 20,
+    "Rarity": 2, // 1 common, 2 rare, 3 epic, 4 legendary
+    "Durability": 0.94, //od 1.00 až do 0.00
+    "ImagePath": "/images/sword.png"
+  }
+]
