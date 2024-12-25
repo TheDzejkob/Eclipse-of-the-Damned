@@ -46,7 +46,7 @@
                 
                 
                 <Border Margin="0,-10,180,0" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent" >
-                    <Button x:Name="Map" Background="Transparent" BorderBrush="Transparent" Click="updateItemDetail">
+                    <Button x:Name="Map" Background="Transparent" BorderBrush="Transparent" Click="test_Click" >
                         <Image Source="/images/Icons/map.png" Height="90" />
                     </Button>
                 </Border>

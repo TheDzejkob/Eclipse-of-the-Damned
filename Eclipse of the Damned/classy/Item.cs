@@ -19,7 +19,8 @@ namespace Eclipse_of_the_Damned.classy
         public List<Ability> Abilities { get; set; } = new List<Ability>(); // Initialize here
         public string ImagePath { get; set; }
 
-        public Item(int id, string name, string description, string category, int weight, int value, int rarity ,float durability, List<Ability> abilities ,string imagePath) 
+        // Constructor
+        public Item(int id, string name, string description, string category, int weight, int value, int rarity, float durability, List<Ability> abilities, string imagePath)
         {
             Id = id;
             Name = name;
@@ -29,7 +30,7 @@ namespace Eclipse_of_the_Damned.classy
             Value = value;
             Rarity = rarity;
             Durability = durability;
-            Abilities = abilities ?? new List<Ability>(); 
+            Abilities = abilities ?? new List<Ability>();
             ImagePath = imagePath;
         }
     }

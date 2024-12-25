@@ -1,9 +1,12 @@
-﻿using Eclipse_of_the_Damned.classy;
+﻿using Newtonsoft.Json;
+using Eclipse_of_the_Damned.classy;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace Eclipse_of_the_Damned
 {
@@ -25,25 +29,51 @@ namespace Eclipse_of_the_Damned
         Item stick;
         Item test;
         private GameMaster gameMaster;
+        string json;
+        string jsonFilePath;
+        string basePath;
+        public List<Item> AllItems ;
+
 
         public InGame(GameMaster gameMaster)
         {
             InitializeComponent();
             this.gameMaster = gameMaster;
             updateTime();
-            stick = new Item(0, "stick", "je to prostě stick", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Items/sword.png");
-            test = new Item(1, "test", "negr bagr", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Arrow.png");
 
+            // Initialize AllItems list
+            AllItems = new List<Item>();
 
-            gameMaster.Player.Inventory.Add(stick);
-            gameMaster.Player.Inventory.Add(test);
-            updateInventory();
+            // Deserialize JSON file into the AllItems list
+            LoadItemsFromJson();
+
+            // You can add the stick as an example item, or remove this if not needed
+            //stick = new Item(0, "stick", "je to prostě stick", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Items/sword.png");
+
+            // Example of adding the stick to the player's inventory
+            //gameMaster.Player.Inventory.Add(stick);
+            //updateInventory();
         }
-        //private void TestClick(object sender, RoutedEventArgs e)
-        //{
-        //    SelectedInventoryItem = stick;
-        //    updateItemDetail(sender, e);
-        //}
+        private void LoadItemsFromJson()
+        {
+            // Provide the path to your JSON file
+            jsonFilePath = "json/Items.json";  // Update with the actual path
+            basePath = AppDomain.CurrentDomain.BaseDirectory;  // Base directory for the app
+
+            // Read the JSON file
+            try
+            {
+                json = File.ReadAllText(jsonFilePath);
+
+                // Deserialize JSON string into a list of Item objects
+                AllItems = JsonConvert.DeserializeObject<List<Item>>(json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading items from JSON: " + ex.Message);
+            }
+        }
+
         private void updateItemDetail(object sender, RoutedEventArgs e)
         {
             itemDetail.Visibility = Visibility.Visible;
@@ -90,23 +120,80 @@ namespace Eclipse_of_the_Damned
             }
         }
 
-        private void addToInventory(List<Item> items)
+
+
+        // gl se v tomhle vyznat (for future jacob :D ) 
+        // mrdky chyby
+        //prave jsem stavil hodinu nad errorem ktery byl chbejici zavorka pač si rekl autodoplnovani ze zrovna ted nebude fungovat :) 
+        //lano je cesta kamo
+
+        private void test_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in items)
+            // Check if AllItems is not null and has at least one item
+            if (AllItems != null && AllItems.Count > 0)
             {
-                gameMaster.Player.Inventory.Add(item);
+                // Add the first item from AllItems to the player's inventory
+                
+
+                // Update the inventory UI to reflect the change
+                List<int> itemIndexes = new List<int> { 0, 1, };
+                addToInventory(itemIndexes);
+                updateInventory();
+                // Optionally show a confirmation message
+                MessageBox.Show("Item added to inventory!");
             }
+            else
+            {
+                MessageBox.Show("No items available in AllItems.");
+            }
+        }
+        private void addToInventory(List<int> itemsIndexes)
+        {
+            foreach (int index in itemsIndexes)
+            {
+                if (index >= 0 && index < AllItems.Count)
+                {
+                    gameMaster.Player.Inventory.Add(AllItems[index]);
+                }
+                else
+                {
+                    MessageBox.Show("You got nothing :D.");
+                }
+            }
+            MessageBox.Show("You got something.");
             updateInventory();
         }
-        private void takeFromInventory(List<Item> items)
+        private void takeFromInventory(List<int> itemsIndexes)
         {
-            foreach (var item in items)
+            foreach (var index in itemsIndexes)
             {
-                gameMaster.Player.Inventory.Remove(item);
+                gameMaster.Player.Inventory.Add(AllItems[index]);
             }
             updateInventory();
         }
 
+
+        private void EquipItem()
+        {
+            switch (SelectedInventoryItem.Category)
+            {
+                case "Weapon":
+                    gameMaster.EquipedWeapon = SelectedInventoryItem;
+                    break;
+                case "Helmet":
+                    gameMaster.EquipedHelmet = SelectedInventoryItem;
+                    break;
+                case "Chestplate":
+                    gameMaster.EquipedChestplate = SelectedInventoryItem;
+                    break;
+                case "Leggings":
+                    gameMaster.EquipedLeggings = SelectedInventoryItem;
+                    break;
+                case "Boots":
+                    gameMaster.EquipedBoots = SelectedInventoryItem;
+                    break;
+            }
+        }
         private void updateInventory()
         {
             // Clear all inventory slots first
@@ -132,6 +219,7 @@ namespace Eclipse_of_the_Damned
                 }
             }
         }
+        //párno je modlidba
 
         private void InventorySlot_Click(object sender, RoutedEventArgs e)
         {
@@ -142,16 +230,23 @@ namespace Eclipse_of_the_Damned
 
             var tag = clickedButton.Tag;
             int value = Convert.ToInt32(tag);
-            if (tag == null)
+
+            // Ensure the inventory slot has an item assigned to it
+            if (value >= 0 && value < gameMaster.Player.Inventory.Count)
             {
-                SelectedInventoryItem = null;
+                SelectedInventoryItem = gameMaster.Player.Inventory[value];
+                updateItemDetail(sender, e);
             }
-
-            SelectedInventoryItem = gameMaster.Player.Inventory[value];
-
-            updateItemDetail(sender, e);
-
+            else
+            {
+                // Clear item details if the slot is empty
+                SelectedInventoryItem = null;
+                updateItemDetail(sender, e);
+            }
         }
+
+
+
 
         private void updateTime()
         {

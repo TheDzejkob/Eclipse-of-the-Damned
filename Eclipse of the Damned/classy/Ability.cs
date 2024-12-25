@@ -8,19 +8,20 @@ namespace Eclipse_of_the_Damned.classy
 {
     public class Ability
     {
-        public int Id;
         public string Name;
         public string Description;
         public int Heal;
-        public int Demage;
+        public int Damage;
         public int Armor;
-        public Ability( int id, string name, string description, int heal, int demage, int armor) 
+        public int Cost;
+        public Ability( string name, string description, int heal, int damage, int armor, int cost) 
         {
-            Id = id;
             Name = name;
             Description = description;
             Heal = heal;
+            Damage = damage;
             Armor = armor;
+            Cost = cost;
         }
     }
 }

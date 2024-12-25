@@ -1,24 +1,42 @@
 [
   {
-    "Id": 0, //vždicky začíná od 0 a o jedno větší než to nad ním
+    "Id": 0,
     "Name": "stick",
     "Description": "A stick",
-    "Category": "Material", //weapon, armor, potion, food, misc, material(for crafting and shiz) apod.
+    "Category": "Material",
     "Value": 1,
-    "Rarity": 1, // 1 common, 2 rare, 3 epic, 4 legendary
-    "Durability": 1, //od 1.00 až do 0.00
-    "Heal": 0, //pokud 0 není heal item
-    "Armor": 0, //pokud 0 není armor piece 
-    "ImagePath": "/images/stick.png"
+    "Rarity": 1,
+    "Durability": 1,
+    "Abilities": [],
+    "ImagePath": "/images/Items/stick.png"
   },
   {
-    "Id": 1, //vždicky začíná od 0 a o jedno větší než to nad ním
-    "Name": "sword",
-    "Description": "a shgarp sword idk",
-    "Category": "Weapon", //weapon, armor, potion, food, misc, material(for crafting and shiz) apod.
-    "Value": 20,
-    "Rarity": 2, // 1 common, 2 rare, 3 epic, 4 legendary
-    "Durability": 0.94, //od 1.00 až do 0.00
-    "ImagePath": "/images/sword.png"
+    "Id": 1,
+    "Name": "Iron Sword",
+    "Description": "A sturdy blade forged from iron.",
+    "Category": "Weapon",
+    "Weight": 5,
+    "Value": 100,
+    "Rarity": 2,
+    "Durability": 0.85,
+    "Abilities": [
+      {
+        "Name": "Slash",
+        "Description": "A powerful slashing attack.",
+        "Heal": 0,
+        "Damage": 3,
+        "Armor": 0,
+        "Cost": 1
+      },
+      {
+        "Name": "Pierce",
+        "Description": "A precise piercing attack.",
+        "Heal": 0,
+        "Damage": 1,
+        "Armor": 0,
+        "Cost": 3
+      }
+    ],
+    "ImagePath": "/images/Items/sword.png"
   }
 ]

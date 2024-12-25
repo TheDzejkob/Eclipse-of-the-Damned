@@ -9,6 +9,7 @@ public class Entity
     public int Health { get; set; }
     public int Armor { get; set; }
     public List<Item> Inventory { get; set; } = new List<Item>(); // Initialize here
+    public List<Item> DroppedItems { get; set; } = new List<Item>(); // Add DroppedItems
 
     public Class EntityClass { get; set; }
     public Race EntityRace { get; set; }
