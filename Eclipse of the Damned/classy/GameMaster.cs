@@ -25,6 +25,11 @@ namespace Eclipse_of_the_Damned.classy
         public GameMaster(Entity player, Item equipedWeapon ,Item equipedHelmet , Item equipedChestplate ,Item equipedLeggings, Item EquipedBoots, bool inCombat, bool playerTurn, float masterVolume, float musicVolume, bool fullscreen)
         {
             Player = player;
+            EquipedWeapon = equipedWeapon;
+            EquipedHelmet = equipedHelmet;
+            EquipedChestplate = equipedChestplate;
+            EquipedLeggings = equipedLeggings;
+            EquipedBoots = EquipedBoots;
             InCombat = inCombat;
             PlayerTurn = playerTurn;
             MasterVolume = masterVolume;

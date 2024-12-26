@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Eclipse_of_the_Damned
 {
@@ -193,6 +194,16 @@ namespace Eclipse_of_the_Damned
                     gameMaster.EquipedBoots = SelectedInventoryItem;
                     break;
             }
+        }
+
+
+        private void CalculateDemage(int Demage)
+        {
+            int totalArmor = gameMaster.EquipedBoots.Abilities[0].Armor + gameMaster.EquipedLeggings.Abilities[0].Armor + gameMaster.EquipedChestplate.Abilities[0].Armor + gameMaster.EquipedHelmet.Abilities[0].Armor ;
+            
+            float DamageMultiplier = Demage / (Demage + totalArmor);
+            float finallDmg = Demage * DamageMultiplier;
+
         }
         private void updateInventory()
         {
