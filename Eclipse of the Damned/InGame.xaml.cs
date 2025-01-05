@@ -210,7 +210,7 @@ namespace Eclipse_of_the_Damned
             // Clear all inventory slots first
             for (int i = 0; i < 24; i++)
             {
-                var slotImage = (Image)this.FindName($"InventorySlot{i}");
+                var slotImage = (System.Windows.Controls.Image)this.FindName($"InventorySlot{i}");
                 if (slotImage != null)
                 {
                     slotImage.Source = null;
@@ -221,7 +221,7 @@ namespace Eclipse_of_the_Damned
             for (int i = 0; i < gameMaster.Player.Inventory.Count; i++)
             {
                 var item = gameMaster.Player.Inventory[i];
-                var slotImage = (Image)this.FindName($"InventorySlot{i}");
+                var slotImage = (System.Windows.Controls.Image)this.FindName($"InventorySlot{i}");
 
                 if (slotImage != null && item != null)
                 {
