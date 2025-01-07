@@ -35,6 +35,8 @@ namespace Eclipse_of_the_Damned
         string basePath;
         public List<Item> AllItems ;
 
+        int totalArmor;
+
 
         public InGame(GameMaster gameMaster)
         {
@@ -125,8 +127,8 @@ namespace Eclipse_of_the_Damned
 
         // gl se v tomhle vyznat (for future jacob :D ) 
         // mrdky chyby
-        //prave jsem stavil hodinu nad errorem ktery byl chbejici zavorka pač si rekl autodoplnovani ze zrovna ted nebude fungovat :) 
-        //lano je cesta kamo
+        // prave jsem stavil hodinu nad errorem ktery byl chbejici zavorka pač si rekl autodoplnovani ze zrovna ted nebude fungovat :) 
+        // lano je cesta kamo
 
         private void test_Click(object sender, RoutedEventArgs e)
         {
@@ -172,7 +174,23 @@ namespace Eclipse_of_the_Damned
             }
             updateInventory();
         }
+        private void LoadCharacterWindow()
+        {
+            CharacterName.Text = gameMaster.Player.EntityName;
+            switch (gameMaster.Player.Gender)
+            {
+                case true:
+                    CharacterGender.Text = "Male";
+                    break;
+                case false:
+                    CharacterGender.Text = "Female";
+                    break;
 
+            }
+            CharacterLevel.Text = "Level:" + " " + gameMaster.Player.Level.ToString();
+            CharacterHealth.Text = "Health:" + " " + gameMaster.Player.Health.ToString();
+
+        }
 
         private void EquipItem()
         {
@@ -195,15 +213,18 @@ namespace Eclipse_of_the_Damned
                     break;
             }
         }
-
+        private void CalculateArmor()
+        {
+            totalArmor = gameMaster.EquipedBoots.Abilities[0].Armor + gameMaster.EquipedLeggings.Abilities[0].Armor + gameMaster.EquipedChestplate.Abilities[0].Armor + gameMaster.EquipedHelmet.Abilities[0].Armor;
+        }
 
         private void CalculateDemage(int Demage)
         {
-            int totalArmor = gameMaster.EquipedBoots.Abilities[0].Armor + gameMaster.EquipedLeggings.Abilities[0].Armor + gameMaster.EquipedChestplate.Abilities[0].Armor + gameMaster.EquipedHelmet.Abilities[0].Armor ;
-            
+            CalculateArmor();
+
             float DamageMultiplier = Demage / (Demage + totalArmor);
             float finallDmg = Demage * DamageMultiplier;
-
+            return finallDmg;
         }
         private void updateInventory()
         {

@@ -281,11 +281,25 @@
                             FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
                             StrokeThickness="5" Stroke="Black" Fill="White">Character
                         </local:OutlinedTextBlock>
-                            <local:OutlinedTextBlock Margin="40,20,0,10" HorizontalAlignment="Left" FontSize="45" 
+                            <local:OutlinedTextBlock x:Name="CharacterName" Margin="40,20,0,10" HorizontalAlignment="Left" FontSize="50" 
     FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
     StrokeThickness="5" Stroke="Black" Fill="White">default name
                             </local:OutlinedTextBlock>
-                            <Image Margin="330,-80,0,0" Width="330" Height="450" Stretch="UniformToFill" Source="/images/characterPlaceholder.png" />
+                            <local:OutlinedTextBlock x:Name="CharacterGender" Margin="80,20,0,10" HorizontalAlignment="Left" FontSize="40" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">gender
+                            </local:OutlinedTextBlock>
+
+                            <local:OutlinedTextBlock x:Name="CharacterLevel" Margin="80,20,0,10" HorizontalAlignment="Left" FontSize="40" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Level: 1
+                            </local:OutlinedTextBlock>
+
+                            <local:OutlinedTextBlock x:Name="CharacterHealth" Margin="80,20,0,10" HorizontalAlignment="Left" FontSize="40" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Health: 10
+                            </local:OutlinedTextBlock>
+                            <Image Margin="330,-180,0,0" Width="330" Height="450" Stretch="UniformToFill" Source="/images/characterPlaceholder.png" />
                         </StackPanel>
                     </Border>
 
