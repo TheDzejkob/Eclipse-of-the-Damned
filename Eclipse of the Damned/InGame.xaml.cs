@@ -44,22 +44,14 @@ namespace Eclipse_of_the_Damned
             this.gameMaster = gameMaster;
             updateTime();
 
-            // Initialize AllItems list
+
             AllItems = new List<Item>();
 
-            // Deserialize JSON file into the AllItems list
             LoadItemsFromJson();
-
-            // You can add the stick as an example item, or remove this if not needed
-            //stick = new Item(0, "stick", "je to prostě stick", "material", 1, 1, 1, 1.00f, new List<Ability> { }, "/images/Items/sword.png");
-
-            // Example of adding the stick to the player's inventory
-            //gameMaster.Player.Inventory.Add(stick);
-            //updateInventory();
         }
         private void LoadItemsFromJson()
         {
-            // Provide the path to your JSON file
+
             jsonFilePath = "json/Items.json";  // Update with the actual path
             basePath = AppDomain.CurrentDomain.BaseDirectory;  // Base directory for the app
 
@@ -82,13 +74,10 @@ namespace Eclipse_of_the_Damned
             itemDetail.Visibility = Visibility.Visible;
             if (SelectedInventoryItem != null)
             {
-                // Update the item name
                 ItemName.Text = SelectedInventoryItem.Name;
 
-                // Update the item description
                 Discription.Text = SelectedInventoryItem.Description;
 
-                // Update the item image
                 ItemDisplay.Source = new BitmapImage(new Uri(SelectedInventoryItem.ImagePath, UriKind.Relative));
 
                 ItemCategory.Text = SelectedInventoryItem.Category;
@@ -174,8 +163,18 @@ namespace Eclipse_of_the_Damned
             }
             updateInventory();
         }
-        private void LoadCharacterWindow()
+
+        private void LoadCharacterWindow( object sender, RoutedEventArgs e)
         {
+            if (CharacterPopUp.Visibility == Visibility.Visible) { 
+            
+                CharacterPopUp.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                CharacterPopUp.Visibility = Visibility.Visible;
+            }
+
             CharacterName.Text = gameMaster.Player.EntityName;
             switch (gameMaster.Player.Gender)
             {
@@ -189,7 +188,8 @@ namespace Eclipse_of_the_Damned
             }
             CharacterLevel.Text = "Level:" + " " + gameMaster.Player.Level.ToString();
             CharacterHealth.Text = "Health:" + " " + gameMaster.Player.Health.ToString();
-
+            CharacterClass.Text = "Class:" + " " + gameMaster.Player.EntityClass.ClassName.ToString();
+            CharacterRace.Text = "Race:" + " " + gameMaster.Player.EntityRace.RaceName.ToString();
         }
 
         private void EquipItem()
@@ -212,6 +212,7 @@ namespace Eclipse_of_the_Damned
                     gameMaster.EquipedBoots = SelectedInventoryItem;
                     break;
             }
+            
         }
         private void CalculateArmor()
         {
@@ -224,7 +225,7 @@ namespace Eclipse_of_the_Damned
 
             float DamageMultiplier = Demage / (Demage + totalArmor);
             float finallDmg = Demage * DamageMultiplier;
-            return finallDmg;
+            
         }
         private void updateInventory()
         {
