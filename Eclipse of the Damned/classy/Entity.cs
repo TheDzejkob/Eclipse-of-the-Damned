@@ -9,12 +9,13 @@ public class Entity
     public int Health { get; set; }
     public int Armor { get; set; }
     public List<Item> Inventory { get; set; } = new List<Item>(); // Initialize here
-    public List<Item> DroppedItems { get; set; } = new List<Item>(); // Add DroppedItems
 
     public Class EntityClass { get; set; }
     public Race EntityRace { get; set; }
 
-    public Entity(string entityName, int level, int experience, int health, int armor, List<Item> inventory, Class entityClass, Race entityRace, bool gender)
+    public string ImagePath { get; set; }
+
+    public Entity(string entityName, int level, int experience, int health, int armor, List<Item> inventory, Class entityClass, Race entityRace, bool gender, string imagePath )
     {
         EntityName = entityName;
         Gender = gender;
@@ -25,5 +26,6 @@ public class Entity
         Inventory = inventory ?? new List<Item>(); // Ensure inventory is not null
         EntityClass = entityClass;
         EntityRace = entityRace;
+        ImagePath = imagePath;
     }
 }

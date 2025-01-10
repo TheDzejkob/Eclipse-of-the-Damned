@@ -18,6 +18,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
+using System.Reflection.Metadata;
 
 namespace Eclipse_of_the_Damned
 {
@@ -30,19 +32,25 @@ namespace Eclipse_of_the_Damned
         Item stick;
         Item test;
         private GameMaster gameMaster;
+        CombatManager combatManager;
         string json;
         string jsonFilePath;
         string basePath;
-        public List<Item> AllItems ;
+        public List<Item> AllItems;
+        Entity SkeletonHalfling;
 
         int totalArmor;
-
+        int startPlayerHealth;
+        int startEnemyHealth;
 
         public InGame(GameMaster gameMaster)
         {
             InitializeComponent();
             this.gameMaster = gameMaster;
             updateTime();
+            combatManager = new CombatManager(null,0,true);
+            gameMaster.CombatManager = combatManager;
+            SkeletonHalfling = new Entity("Skeleton Halfling", 1,3,6,0,new List<Item>(), null,null, false, "/images/SkeletonHalfling.png");
 
 
             AllItems = new List<Item>();
@@ -139,6 +147,78 @@ namespace Eclipse_of_the_Damned
                 MessageBox.Show("No items available in AllItems.");
             }
         }
+
+        private void StartCombat()
+        {
+            CombatInterface.Visibility = Visibility.Visible;
+            PlayerImage.Source = new BitmapImage(new Uri(gameMaster.Player.ImagePath, UriKind.Relative));
+            EnemyImage.Source = new BitmapImage(new Uri(gameMaster.CombatManager.Enemy.ImagePath, UriKind.Relative));
+            List<Ability> playerAbilities = new List<Ability>();
+            startPlayerHealth = gameMaster.Player.Health;
+            startEnemyHealth = gameMaster.CombatManager.Enemy.Health;
+
+            CombatText.Text = "You have encountered a " + gameMaster.CombatManager.Enemy.EntityName + " " + "!";
+            UpdateHp();
+            if (gameMaster.EquipedWeapon == null)
+            {
+                Ability lightPunch = new Ability("Light Punch", "u just punched the mf in a face", 0, 3, 0, 2);
+                Ability heavyPunch = new Ability("Heavy Punch", "u just punched the mf in a face", 0, 4, 0, 6);
+                Ability handBlock = new Ability("Hand Block", "U are trying to block attack with your bare hands", 0, 0, 2, 4);
+                playerAbilities.Add(lightPunch);
+                playerAbilities.Add(heavyPunch);
+            }
+            else
+            {
+                playerAbilities = gameMaster.EquipedWeapon.Abilities;
+            }
+
+        }
+
+        private void EndCombat()
+        {
+            gameMaster.CombatManager.Enemy = null;
+            EnemyImage.Source = null;
+            CombatInterface.Visibility = Visibility.Hidden;
+        }
+
+        private void UpdateHp()
+        {
+            PlayerHealth.Text ="Hp: " + gameMaster.Player.Health.ToString() + "/" + startPlayerHealth;
+            EnemyHealth.Text = "Hp" + gameMaster.CombatManager.Enemy.Health.ToString() + "/" + startEnemyHealth;
+
+
+        }
+
+        private async void EnemyTurn()
+        {
+            ArrowLeft.Visibility = Visibility.Collapsed;
+            ArrowRight.Visibility = Visibility.Visible;
+            
+            await Task.Delay(2000);
+            // TODO aksuall dmg
+            UpdateHp();
+        }
+
+        private void PlayerTurn()
+        {
+            ArrowRight.Visibility = Visibility.Collapsed;
+            ArrowLeft.Visibility = Visibility.Visible;
+
+            UpdateHp();
+        }
+
+
+        /*TODO: Death Player
+                Death Enemy
+                Attack Button based na abilities (chck pokud ma weapon)
+                winScreen (POčet kol, total dmg, Enemy Name, Xp za zabití)
+                Drops
+                Demo Fights (alespoň 2 s dropy zbraně a armoru idk)
+                pořešit Enemy dmg kde brát (asi jim dát item s abilitama (může to být i drop))
+                AutoTimeUpdate
+                Sound design (pokud bude čas)
+         */  
+        */
         private void addToInventory(List<int> itemsIndexes)
         {
             foreach (int index in itemsIndexes)
@@ -278,7 +358,11 @@ namespace Eclipse_of_the_Damned
             }
         }
 
-
+        public static int GenerateRandomNumber()
+        {
+            Random random = new Random();
+            return random.Next(0, 11); // Upper bound is exclusive, so use 11 to include 10
+        }
 
 
         private void updateTime()
@@ -330,5 +414,32 @@ namespace Eclipse_of_the_Damned
             else
                 Inventory.Visibility = Visibility.Visible;
         }
+
+        private async void RunAwayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(gameMaster.CombatManager.PlayerTurn == true)
+            {
+                int randomNumber = GenerateRandomNumber();
+                if(randomNumber > 7)
+                {
+                    CombatText.Text = "You have successfully run away!";
+                    await Task.Delay(2000);
+                    EndCombat();
+                }
+                else
+                {
+                    CombatText.Text = "You have failed to run away!";
+                    await Task.Delay(2000);
+                    EnemyTurn();
+                }
+                gameMaster.CombatManager.PlayerTurn = false;
+            }
+            else
+            {
+
+            }
+        }
+
+
     }
 }

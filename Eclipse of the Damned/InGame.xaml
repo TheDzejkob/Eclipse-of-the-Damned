@@ -76,143 +76,144 @@
                 </Border>
                 <!-- *** -->
                 <!-- Inventory -->
-                <Border x:Name="Inventory" Visibility="Collapsed" Background="#071821" Width="730" Height="910" Margin="60,120,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <Border Background="#103445" VerticalAlignment="Center" HorizontalAlignment="Center" Height="880" Width="700">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="Transparent">
-                            <StackPanel>
-                                <local:OutlinedTextBlock Margin="0,20,0,10" HorizontalAlignment="Center" FontSize="70" 
+                <Grid x:Name="InventoryPanel" Visibility="Collapsed" Panel.ZIndex="2" Background="Black" Opacity="0.9">
+                    <Border x:Name="Inventory" Visibility="Collapsed" Background="#071821" Width="730" Height="910" Margin="60,120,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Border Background="#103445" VerticalAlignment="Center" HorizontalAlignment="Center" Height="880" Width="700">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="Transparent">
+                                <StackPanel>
+                                    <local:OutlinedTextBlock Margin="0,20,0,10" HorizontalAlignment="Center" FontSize="70" 
                                         FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
                                          StrokeThickness="5" Stroke="Black" Fill="White">Inventory</local:OutlinedTextBlock>
 
-                                <!-- Inventory Slots -->
-                                <UniformGrid Columns="4" HorizontalAlignment="Center">
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="0" Click="InventorySlot_Click" >
-                                            <Image Name="InventorySlot0" Stretch="Uniform" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="1"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot1" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="2" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot2"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="3"  Click="InventorySlot_Click"> 
-                                            <Image Name="InventorySlot3"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="4" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot4" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="5"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot5"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="6"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot6" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="7" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot7"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="8" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot8" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="9" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot9" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="10"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot10" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="11"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot11" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="12"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot12" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="13"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot13" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="14" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot14"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="15"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot15" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="16"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot16" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="17"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot17" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="18"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot18" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="19"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot19" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="20" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot20"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="21" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot21"  />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="22" Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot22" />
-                                        </Button>
-                                    </Border>
-                                    <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
-                                        <Button Background="Transparent" Tag="23"  Click="InventorySlot_Click">
-                                            <Image Name="InventorySlot23" />
-                                        </Button>
-                                    </Border>
-                                </UniformGrid>
-                            </StackPanel>
-                        </ScrollViewer>
+                                    <!-- Inventory Slots -->
+                                    <UniformGrid Columns="4" HorizontalAlignment="Center">
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="0" Click="InventorySlot_Click" >
+                                                <Image Name="InventorySlot0" Stretch="Uniform" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="1"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot1" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="2" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot2"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="3"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot3"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="4" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot4" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="5"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot5"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="6"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot6" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="7" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot7"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="8" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot8" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="9" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot9" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="10"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot10" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="11"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot11" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="12"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot12" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="13"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot13" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="14" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot14"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="15"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot15" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="16"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot16" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="17"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot17" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="18"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot18" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="19"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot19" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="20" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot20"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="21" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot21"  />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="22" Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot22" />
+                                            </Button>
+                                        </Border>
+                                        <Border Width="140" Height="140" CornerRadius="10" Background="#0B232F" Margin="15">
+                                            <Button Background="Transparent" Tag="23"  Click="InventorySlot_Click">
+                                                <Image Name="InventorySlot23" />
+                                            </Button>
+                                        </Border>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Border>
                     </Border>
-                </Border>
-                <!-- *** -->
-
+                    <!-- *** -->
+                </Grid>
                 <!-- Item Detail -->
                 <Border x:Name="itemDetail" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center" Width="385" Height="560" Background="#071821" Margin="15,-90,0,0"   >
                     <Border Background="#103445" Width="355" Height="530">
@@ -315,6 +316,87 @@ StrokeThickness="5" Stroke="Black" Fill="White">Race: default
                     </Border>
                     
                 </Border>
+                <!-- Combat screen-->
+                <Grid x:Name="CombatInterface" > 
+                <Image Source="/images/inGameCombatBackground.png" Stretch="Fill" Margin="-50,-50,-50,-50"></Image>
+                <Grid>
+                    <Image x:Name="PlayerImage" Source="/images/characterPlaceholder.png"  Height="600" HorizontalAlignment="Left" Margin="20"/>
+                    <Image x:Name="EnemyImage" Source="/images/SkeletonHalfling.png"  Height="600" HorizontalAlignment="Right" Margin="20"/>
+                    <local:OutlinedTextBlock x:Name="PlayerName" Margin="90,30,0,10" HorizontalAlignment="Left" FontSize="80" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">Default
+                    </local:OutlinedTextBlock>
+
+                    <local:OutlinedTextBlock x:Name="PlayerHealth" Margin="70,170,0,10" HorizontalAlignment="Left" FontSize="70" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">Hp: 17/20
+                    </local:OutlinedTextBlock>
+
+
+                    <local:OutlinedTextBlock x:Name="EnemyName" Margin="0,30,90,10" HorizontalAlignment="Right" FontSize="80" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">Default
+                    </local:OutlinedTextBlock>
+
+                    <local:OutlinedTextBlock x:Name="EnemyHealth" Margin="0,170,70,10" HorizontalAlignment="Right" FontSize="70" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">Hp: 17/20
+                    </local:OutlinedTextBlock>
+
+                    <Image x:Name="ArrowLeft" Visibility="Hidden" Source="/images/Arrow.png" Width="200" VerticalAlignment="Top" Margin="100,150,0,0"/>
+                    <Image x:Name="ArrowRight" Visibility="Hidden" Source="/images/ArrowRight.png" Width="200" VerticalAlignment="Top" Margin="100,150,0,0"/>
+
+                    <local:OutlinedTextBlock Margin="80,20,0,10" HorizontalAlignment="Center" FontSize="40" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">*Turn*
+                    </local:OutlinedTextBlock>
+                    <local:OutlinedTextBlock  Margin="80,70,0,10" HorizontalAlignment="Center" FontSize="70" 
+                    FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                    StrokeThickness="5" Stroke="Black" Fill="White">1
+                    </local:OutlinedTextBlock>
+
+                        <Border Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,40,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                            <Button Margin="10" Background="#103445" BorderThickness="0" Click="RunAwayButton_Click">
+
+                                <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+                            FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                            StrokeThickness="5" Stroke="Black" Fill="White">Run Away
+                                </local:OutlinedTextBlock>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Border>
+
+
+                        <Border Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,410,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                        <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                            <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+                            FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                            StrokeThickness="5" Stroke="Black" Fill="White">Fight   
+                            </local:OutlinedTextBlock>
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Border>
+
+                    <Border Width="1000" Height="180" CornerRadius="15" Background="#071821" Margin="80,0,50,30" VerticalAlignment="Bottom" HorizontalAlignment="Left" >
+                        <Border Margin="15" Background="#103445">
+                            <local:OutlinedTextBlock x:Name="CombatText"  Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="55" 
+                            FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                            StrokeThickness="5" Stroke="Black" TextWrapping="Wrap" Fill="White"> Combat text
+                            </local:OutlinedTextBlock>
+                        </Border>
+                    </Border>
+                    </Grid>
+                </Grid>
+                
             </Grid>
         </Viewbox>
     </Grid>

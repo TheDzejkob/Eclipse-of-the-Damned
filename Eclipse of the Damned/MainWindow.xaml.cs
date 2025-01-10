@@ -29,7 +29,7 @@ namespace Eclipse_of_the_Damned
             InitializeComponent();
             CompositionTarget.Rendering += OnRendering;
 
-            gameMaster = new GameMaster(null,null,null,null,null,null,false,true,1,1,false);
+            gameMaster = new GameMaster(null,null,null,null,null,null,null,1,1,false);
 
         }
 
