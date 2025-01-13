@@ -28,11 +28,15 @@
     <None Remove="images\Male.png" />
     <None Remove="images\SkeletonHalfling.png" />
     <None Remove="images\Title.png" />
+    <None Remove="images\youDied.png" />
     <None Remove="json\Items.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="images\ArrowRight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\youDied.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\Items\stick.png">

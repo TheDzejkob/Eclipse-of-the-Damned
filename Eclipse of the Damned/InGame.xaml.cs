@@ -42,17 +42,20 @@ namespace Eclipse_of_the_Damned
         int totalArmor;
         int startPlayerHealth;
         int startEnemyHealth;
+        bool isBlurred;
 
+        int Turn;
         public InGame(GameMaster gameMaster)
         {
             InitializeComponent();
+            isBlurred = false;
             this.gameMaster = gameMaster;
             updateTime();
             combatManager = new CombatManager(null,0,true);
             gameMaster.CombatManager = combatManager;
             SkeletonHalfling = new Entity("Skeleton Halfling", 1,3,6,0,new List<Item>(), null,null, false, "/images/SkeletonHalfling.png");
 
-
+            Turn = 1;
             AllItems = new List<Item>();
 
             LoadItemsFromJson();
@@ -186,7 +189,9 @@ namespace Eclipse_of_the_Damned
             PlayerHealth.Text ="Hp: " + gameMaster.Player.Health.ToString() + "/" + startPlayerHealth;
             EnemyHealth.Text = "Hp" + gameMaster.CombatManager.Enemy.Health.ToString() + "/" + startEnemyHealth;
 
-
+            Turn++;
+            gameMaster.CombatManager.Turn = Turn;
+            TurnNumber.Text = "Turn: " + gameMaster.CombatManager.Turn.ToString();
         }
 
         private async void EnemyTurn()
@@ -218,7 +223,7 @@ namespace Eclipse_of_the_Damned
                 AutoTimeUpdate
                 Sound design (pokud bude čas)
          */  
-        */
+        
         private void addToInventory(List<int> itemsIndexes)
         {
             foreach (int index in itemsIndexes)
@@ -438,8 +443,39 @@ namespace Eclipse_of_the_Damned
             {
 
             }
+
+
+        }
+        private void ToggleBlur_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isBlurred)
+            {
+                CombatBlur.Radius = 20; // Adjust this value to control blur intensity
+            }
+            else
+            {
+                CombatBlur.Radius = 0;
+            }
+            isBlurred = !isBlurred;
         }
 
 
+        private void FightButton(object sender, RoutedEventArgs e)
+        {
+            AbilityButton1.Visibility = Visibility.Visible;
+            AbilityButton2.Visibility = Visibility.Visible;
+            AbilityButton3.Visibility = Visibility.Visible;
+            AbilityButton4.Visibility = Visibility.Visible;
+            BackFromCombat.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AbilityButton1.Visibility = Visibility.Hidden;
+            AbilityButton2.Visibility = Visibility.Hidden;
+            AbilityButton3.Visibility = Visibility.Hidden;
+            AbilityButton4.Visibility = Visibility.Hidden;
+            BackFromCombat.Visibility = Visibility.Hidden;
+        }
     }
 }

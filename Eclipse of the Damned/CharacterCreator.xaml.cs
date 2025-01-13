@@ -55,7 +55,7 @@ namespace Eclipse_of_the_Damned
             InitializeComponent();
             this.gameMaster = gameMaster;
 
-            player = new Entity("ingác", 0, 0, 1, 0, null, null,null, true,"/images/characterPlaceholder.png");
+            player = new Entity("ingác", 0, 0, 1, 0, null, null, null, true,"/images/characterPlaceholder.png");
 
             //class
             warrior = new Class("Warrior", 0);

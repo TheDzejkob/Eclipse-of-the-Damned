@@ -317,8 +317,12 @@ StrokeThickness="5" Stroke="Black" Fill="White">Race: default
                     
                 </Border>
                 <!-- Combat screen-->
-                <Grid x:Name="CombatInterface" > 
-                <Image Source="/images/inGameCombatBackground.png" Stretch="Fill" Margin="-50,-50,-50,-50"></Image>
+                <Grid x:Name="CombatInterface">
+                    
+                    <Grid.Effect>
+                        <BlurEffect x:Name="CombatBlur" Radius="0"/>
+                    </Grid.Effect>
+                    <Image Source="/images/inGameCombatBackground.png" Stretch="Fill" Margin="-80,-80,-80,-80"></Image>
                 <Grid>
                     <Image x:Name="PlayerImage" Source="/images/characterPlaceholder.png"  Height="600" HorizontalAlignment="Left" Margin="20"/>
                     <Image x:Name="EnemyImage" Source="/images/SkeletonHalfling.png"  Height="600" HorizontalAlignment="Right" Margin="20"/>
@@ -350,7 +354,7 @@ StrokeThickness="5" Stroke="Black" Fill="White">Race: default
                     FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
                     StrokeThickness="5" Stroke="Black" Fill="White">*Turn*
                     </local:OutlinedTextBlock>
-                    <local:OutlinedTextBlock  Margin="80,70,0,10" HorizontalAlignment="Center" FontSize="70" 
+                    <local:OutlinedTextBlock  x:Name="TurnNumber" Margin="80,70,0,10" HorizontalAlignment="Center" FontSize="70" 
                     FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
                     StrokeThickness="5" Stroke="Black" Fill="White">1
                     </local:OutlinedTextBlock>
@@ -372,7 +376,7 @@ StrokeThickness="5" Stroke="Black" Fill="White">Race: default
 
 
                         <Border Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,410,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
-                        <Button Margin="10" Background="#103445" BorderThickness="0">
+                        <Button Margin="10" Background="#103445" BorderThickness="0" Click="FightButton" >
 
                             <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
                             FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
@@ -394,9 +398,146 @@ StrokeThickness="5" Stroke="Black" Fill="White">Race: default
                             </local:OutlinedTextBlock>
                         </Border>
                     </Border>
+                    
+                    <!-- Fight Buttons -->
+                        <Border x:Name="AbilityButton1" Visibility="Collapsed" Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,410,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                            <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+        FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+        StrokeThickness="5" Stroke="Black" Fill="White">Ability 1
+                                </local:OutlinedTextBlock>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Border>
+
+                        <Border x:Name="AbilityButton2" Visibility="Collapsed" Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,40,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                            <Button Margin="10" Background="#103445" BorderThickness="0" >
+
+                                <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+        FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+        StrokeThickness="5" Stroke="Black" Fill="White">Ability 2
+                                </local:OutlinedTextBlock>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Border>
+
+                        
+                        <Border x:Name="AbilityButton3" Visibility="Collapsed" Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,40,130" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                            <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Ability 3
+                                </local:OutlinedTextBlock>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Border>
+
+                        <Border x:Name="AbilityButton4" Visibility="Collapsed" Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="0,0,410,130" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                            <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Ability 4
+                                </local:OutlinedTextBlock>
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Border>
                     </Grid>
+                    
+                    
                 </Grid>
-                
+
+                <Grid x:Name="DeathScreen" Visibility="Collapsed">
+                    <Border Background="#071821" Width="1000" Height="500" CornerRadius="15">
+                        <Border Margin="20"  Background="#103445" CornerRadius="13">
+                            <Grid>
+                                <Image x:Name="YouDiedImage" Visibility="Collapsed"  Source="/images/youDied.png" Height="500" Margin="0,-150,0,0" />
+                                <local:OutlinedTextBlock x:Name="YouKilled" Margin="90,30,0,10" HorizontalAlignment="Left" FontSize="80" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Your Killed "Defaut"
+                                </local:OutlinedTextBlock>
+                                
+                                <Border  Width="360" Height="100" CornerRadius="15" Margin="30" Background="#071821"  VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+                                    <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                        <local:OutlinedTextBlock   HorizontalAlignment="Center" FontSize="30" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Okey
+                                        </local:OutlinedTextBlock>
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="10"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </Border>
+
+                                <Border Width="360" Height="100" CornerRadius="15" Margin="30" Background="#071821"  VerticalAlignment="Bottom" HorizontalAlignment="Left" >
+                                    <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                        <local:OutlinedTextBlock   HorizontalAlignment="Center" FontSize="30" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Combat Stats
+                                        </local:OutlinedTextBlock>
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="10"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </Border>
+
+                                <Border Width="360" Height="100" CornerRadius="15" Background="#071821" Margin="30"  VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                                    <Button Margin="10" Background="#103445" BorderThickness="0">
+
+                                        <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+StrokeThickness="5" Stroke="Black" Fill="White">Exit to MainMenu
+                                        </local:OutlinedTextBlock>
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="10"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                    </Border>
+                </Grid>
+                <Border Visibility="Collapsed" x:Name="BackFromCombat" Width="60" Height="180" CornerRadius="15" Background="#071821" Margin="310,0,0,30" VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                    <Button Margin="5" Background="#103445" BorderThickness="0" Click="Button_Click">
+
+                        <local:OutlinedTextBlock  Margin="0,0,0,0" HorizontalAlignment="Center" FontSize="30" 
+                        FontFamily="pack://application:,,,/fonts/#JMH Cthulhumbus Arcade UG"
+                        StrokeThickness="5" Stroke="Black" Fill="White" >&lt;
+                        </local:OutlinedTextBlock>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
             </Grid>
         </Viewbox>
     </Grid>
