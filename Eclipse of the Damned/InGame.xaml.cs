@@ -20,6 +20,7 @@ using System.Reflection;
 using static System.Net.Mime.MediaTypeNames;
 using System.Security.Cryptography;
 using System.Reflection.Metadata;
+using System.Numerics;
 
 namespace Eclipse_of_the_Damned
 {
@@ -31,6 +32,8 @@ namespace Eclipse_of_the_Damned
         Item SelectedInventoryItem;
         Item stick;
         Item test;
+        Item arm;
+
         private GameMaster gameMaster;
         CombatManager combatManager;
         string json;
@@ -44,6 +47,7 @@ namespace Eclipse_of_the_Damned
         int startEnemyHealth;
         bool isBlurred;
 
+
         int Turn;
         public InGame(GameMaster gameMaster)
         {
@@ -53,11 +57,19 @@ namespace Eclipse_of_the_Damned
             updateTime();
             combatManager = new CombatManager(null,0,true);
             gameMaster.CombatManager = combatManager;
+            stick = new Item(1, "Stick", "Just a stick", "Weapon", 1, 1, 1, 1, new List<Ability>(), "/images/stick.png");
+            stick.Abilities.Add(new Ability("Light Hit", "You hit the enemy with a stick", 0, 3, 0, 2));
             SkeletonHalfling = new Entity("Skeleton Halfling", 1,3,6,0,new List<Item>(), null,null, false, "/images/SkeletonHalfling.png");
 
-            Turn = 1;
+            SkeletonHalfling.Inventory.Add(stick);
+
+            Turn = 0;
             AllItems = new List<Item>();
 
+            arm = new Item(69,"Arm","man its just your arms","Weapon",1,1,1,1,new List<Ability>(),null);
+                arm.Abilities.Add(new Ability("Light Punch", "u just punched the mf in a face", 0, 3, 0, 2));
+                arm.Abilities.Add(new Ability("Heavy Punch", "u just punched the mf in a face", 0, 4, 0, 6));
+                arm.Abilities.Add(new Ability("Hand Block", "U are trying to block attack with your bare hands", 0, 0, 2, 4));
             LoadItemsFromJson();
         }
         private void LoadItemsFromJson()
@@ -151,12 +163,18 @@ namespace Eclipse_of_the_Damned
             }
         }
 
+        private void testCombat(object sender, RoutedEventArgs e)
+        {
+            gameMaster.CombatManager.Enemy = SkeletonHalfling;
+            StartCombat();
+        }
+
         private void StartCombat()
         {
             CombatInterface.Visibility = Visibility.Visible;
             PlayerImage.Source = new BitmapImage(new Uri(gameMaster.Player.ImagePath, UriKind.Relative));
             EnemyImage.Source = new BitmapImage(new Uri(gameMaster.CombatManager.Enemy.ImagePath, UriKind.Relative));
-            List<Ability> playerAbilities = new List<Ability>();
+            
             startPlayerHealth = gameMaster.Player.Health;
             startEnemyHealth = gameMaster.CombatManager.Enemy.Health;
 
@@ -164,15 +182,10 @@ namespace Eclipse_of_the_Damned
             UpdateHp();
             if (gameMaster.EquipedWeapon == null)
             {
-                Ability lightPunch = new Ability("Light Punch", "u just punched the mf in a face", 0, 3, 0, 2);
-                Ability heavyPunch = new Ability("Heavy Punch", "u just punched the mf in a face", 0, 4, 0, 6);
-                Ability handBlock = new Ability("Hand Block", "U are trying to block attack with your bare hands", 0, 0, 2, 4);
-                playerAbilities.Add(lightPunch);
-                playerAbilities.Add(heavyPunch);
+                gameMaster.EquipedWeapon = arm;
             }
             else
             {
-                playerAbilities = gameMaster.EquipedWeapon.Abilities;
             }
 
         }
@@ -196,26 +209,47 @@ namespace Eclipse_of_the_Damned
 
         private async void EnemyTurn()
         {
-            ArrowLeft.Visibility = Visibility.Collapsed;
-            ArrowRight.Visibility = Visibility.Visible;
-            
-            await Task.Delay(2000);
-            // TODO aksuall dmg
-            UpdateHp();
+
+            if (gameMaster.CombatManager.Enemy.Health < 0 || gameMaster.CombatManager.Enemy.Health == 0)
+            {
+                EnemyDeath();
+            }
+            else
+            {
+                ArrowLeft.Visibility = Visibility.Visible;
+                ArrowRight.Visibility = Visibility.Collapsed;
+
+                gameMaster.Player.Health -= gameMaster.CombatManager.Enemy.Inventory[0].Abilities[0].Damage;
+                CombatText.Text = "The " + gameMaster.CombatManager.Enemy.EntityName + " " + "has attacked you!";
+                await Task.Delay(500);
+                UpdateHp();
+                await Task.Delay(2000);
+                PlayerTurn();
+            }
         }
 
-        private void PlayerTurn()
+        private async void PlayerTurn()
         {
-            ArrowRight.Visibility = Visibility.Collapsed;
-            ArrowLeft.Visibility = Visibility.Visible;
-
+            if (gameMaster.Player.Health < 0 || gameMaster.Player.Health == 0)
+            {
+                PlayerDeath();
+            }
+            else
+            {
+                ArrowRight.Visibility = Visibility.Visible;
+            ArrowLeft.Visibility = Visibility.Collapsed;
+            await Task.Delay(500);
             UpdateHp();
+            await Task.Delay(2000);
+
+            }
+
         }
 
 
         /*TODO: Death Player
                 Death Enemy
-                Attack Button based na abilities (chck pokud ma weapon)
+                
                 winScreen (POčet kol, total dmg, Enemy Name, Xp za zabití)
                 Drops
                 Demo Fights (alespoň 2 s dropy zbraně a armoru idk)
@@ -301,16 +335,21 @@ namespace Eclipse_of_the_Damned
         }
         private void CalculateArmor()
         {
-            totalArmor = gameMaster.EquipedBoots.Abilities[0].Armor + gameMaster.EquipedLeggings.Abilities[0].Armor + gameMaster.EquipedChestplate.Abilities[0].Armor + gameMaster.EquipedHelmet.Abilities[0].Armor;
+            totalArmor =
+                (gameMaster.EquipedBoots?.Abilities?[0]?.Armor ?? 0) +
+                (gameMaster.EquipedLeggings?.Abilities?[0]?.Armor ?? 0) +
+                (gameMaster.EquipedChestplate?.Abilities?[0]?.Armor ?? 0) +
+                (gameMaster.EquipedHelmet?.Abilities?[0]?.Armor ?? 0);
         }
 
-        private void CalculateDemage(int Demage)
+        private int CalculateDamage(int damage)
         {
             CalculateArmor();
 
-            float DamageMultiplier = Demage / (Demage + totalArmor);
-            float finallDmg = Demage * DamageMultiplier;
-            
+            float damageMultiplier = damage / (damage + totalArmor);
+            float finalDmg = damage * damageMultiplier;
+
+            return (int)Math.Round(finalDmg); // Return the final damage as an int
         }
         private void updateInventory()
         {
@@ -338,6 +377,8 @@ namespace Eclipse_of_the_Damned
             }
         }
         //párno je modlidba
+        // miluju že když mam problem tak existuje 10 let starej reddit thread kde je řešení 💀
+
 
         private void InventorySlot_Click(object sender, RoutedEventArgs e)
         {
@@ -446,17 +487,11 @@ namespace Eclipse_of_the_Damned
 
 
         }
-        private void ToggleBlur_Click(object sender, RoutedEventArgs e)
+        private void ToggleBlur_Click()
         {
-            if (!isBlurred)
-            {
+            
                 CombatBlur.Radius = 20; // Adjust this value to control blur intensity
-            }
-            else
-            {
-                CombatBlur.Radius = 0;
-            }
-            isBlurred = !isBlurred;
+           
         }
 
 
@@ -467,6 +502,20 @@ namespace Eclipse_of_the_Damned
             AbilityButton3.Visibility = Visibility.Visible;
             AbilityButton4.Visibility = Visibility.Visible;
             BackFromCombat.Visibility = Visibility.Visible;
+
+            AbilityButton1Text.Text = "" + gameMaster.EquipedWeapon.Abilities[0].Name;
+            AbilityButton2Text.Text = "" + gameMaster.EquipedWeapon.Abilities[1].Name;
+            AbilityButton3Text.Text = "" + gameMaster.EquipedWeapon.Abilities[2].Name;
+            if (gameMaster.EquipedWeapon.Abilities.Count > 3 && gameMaster.EquipedWeapon.Abilities[3] != null)
+            {
+                AbilityButton4Text.Text = gameMaster.EquipedWeapon.Abilities[3].Name;
+            }
+            else
+            {
+                // Handle the case where the third item doesn't exist or is null
+                AbilityButton4Text.Text = "No Ability";
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -476,6 +525,122 @@ namespace Eclipse_of_the_Damned
             AbilityButton3.Visibility = Visibility.Hidden;
             AbilityButton4.Visibility = Visibility.Hidden;
             BackFromCombat.Visibility = Visibility.Hidden;
+        }
+
+        private void AbilityButton1_Click(object sender, RoutedEventArgs e)
+        {
+            if(gameMaster.CombatManager.PlayerTurn == true)
+            {
+            gameMaster.Player.Health += gameMaster.EquipedWeapon.Abilities[0].Heal;
+            gameMaster.CombatManager.Enemy.Health -= CalculateDamage(gameMaster.EquipedWeapon.Abilities[0].Damage);
+            gameMaster.Player.Armor += gameMaster.EquipedWeapon.Abilities[0].Armor;
+            PlayerTurn();
+
+            EnemyTurn();
+            }
+            else
+            {
+                CombatText.Text = "It's not your turn!";
+            }
+
+        }
+
+        private void AbilityButton2_Click(object sender, RoutedEventArgs e)
+        {
+            if(gameMaster.CombatManager.PlayerTurn == true)
+            {
+            gameMaster.Player.Health += gameMaster.EquipedWeapon.Abilities[1].Heal;
+            gameMaster.CombatManager.Enemy.Health -= CalculateDamage(gameMaster.EquipedWeapon.Abilities[1].Damage);
+            gameMaster.Player.Armor += gameMaster.EquipedWeapon.Abilities[1].Armor;
+            PlayerTurn();
+
+                EnemyTurn();
+            }
+            else
+            {
+                CombatText.Text = "It's not your turn!";
+            }
+        }
+
+        private void AbilityButton3_Click(object sender, RoutedEventArgs e)
+        {
+            if(gameMaster.CombatManager.PlayerTurn == true)
+            {
+            gameMaster.Player.Health += gameMaster.EquipedWeapon.Abilities[2].Heal;
+            gameMaster.CombatManager.Enemy.Health -= CalculateDamage(gameMaster.EquipedWeapon.Abilities[2].Damage);
+            gameMaster.Player.Armor += gameMaster.EquipedWeapon.Abilities[2].Armor;
+            PlayerTurn();
+
+                EnemyTurn();
+            }
+            else
+            {
+                CombatText.Text = "It's not your turn!";
+            }
+        }
+
+        private void AbilityButton4_Click(object sender, RoutedEventArgs e)
+        {
+            if (gameMaster.CombatManager.PlayerTurn == true)
+            {
+            gameMaster.Player.Health += gameMaster.EquipedWeapon.Abilities[3].Heal;
+            gameMaster.CombatManager.Enemy.Health -= CalculateDamage(gameMaster.EquipedWeapon.Abilities[3].Damage);
+            gameMaster.Player.Armor += gameMaster.EquipedWeapon.Abilities[3].Armor;
+            PlayerTurn();
+
+                EnemyTurn();
+            }
+            else
+            {
+                CombatText.Text = "It's not your turn!";
+            }
+        }
+
+        private void DeathScreenExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void DeathScreenOk_Click(object sender, RoutedEventArgs e)
+        {
+            DeathScreen.Visibility = Visibility.Hidden;
+            DeathScreenCombatStats.Visibility = Visibility.Hidden;
+            DeathScreenOk.Visibility = Visibility.Hidden;
+            CombatInterface.Visibility = Visibility.Hidden;
+        }
+
+        private void DeathScreenCombatStats_Click(object sender, RoutedEventArgs e)
+        {
+            EnemyNameEncounter.Text = "Enemy Name: " + gameMaster.CombatManager.Enemy.EntityName;
+            TurnsInEncounter.Text = "Total Turns: " + gameMaster.CombatManager.Turn;
+            ExpInEncounter.Text = "Experience Gained: " + gameMaster.CombatManager.Enemy.Experience;
+
+            DropsImg.Source = new BitmapImage(new Uri(gameMaster.CombatManager.Enemy.Inventory[0].ImagePath, UriKind.Relative));
+
+        }
+
+        private void PlayerDeath()
+        {
+            ToggleBlur_Click();
+            YouDiedImage.Visibility = Visibility.Visible;
+            EndCombat();
+            DeathScreenExit.Visibility = Visibility.Visible;
+        }
+
+        private void EnemyDeath()
+        {
+            ToggleBlur_Click();
+            EndCombat();
+            DeathScreen.Visibility = Visibility.Visible;
+            DeathScreenCombatStats.Visibility = Visibility.Visible;
+            DeathScreenOk.Visibility = Visibility.Visible;
+            YouKilled.Text = "Your Killed " + gameMaster.CombatManager.Enemy.EntityName;
+
+            List<int> itemIndexes = new List<int> { 0};
+            addToInventory(itemIndexes);
+
+            gameMaster.Player.Experience += gameMaster.CombatManager.Enemy.Experience;
+
         }
     }
 }
